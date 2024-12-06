@@ -20,7 +20,7 @@
     <!-- Favicon -->
     <link href="{{ asset('img/favicon.png') }}" rel="icon" type="image/png">
 </head>
-<body class="bg-gradient-primary min-vh-100 d-flex justify-content-center align-items-center">
+<body class="min-vh-100 d-flex justify-content-center align-items-center">
 
 @yield('main-content')
 
@@ -29,4 +29,9 @@
 <script src="{{ asset('vendor/bootstrap/js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('js/sb-admin-2.min.js') }}"></script>
 </body>
+<style>
+    body{
+        background: url('https://images.unsplash.com/photo-1495202337139-e865ed70fcd4?q=80&w=1476&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center fixed;
+    }
+</style>
 </html>

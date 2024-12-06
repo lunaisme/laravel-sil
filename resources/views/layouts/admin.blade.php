@@ -30,11 +30,11 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
         <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ url('/home') }}">
-            <div class="sidebar-brand-icon rotate-n-15">
-                <i class="fas fa-laugh-wink"></i>
+        <a class="sidebar-brand d-flex align-items-center justify-content-center mb-4 mt-3" href="{{ url('/home') }}">
+            <div class="sidebar-brand-icon">
+                <i class="fa-solid fa-hospital"></i>
             </div>
-            <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+            <div class="sidebar-brand-text mx-3">RSUD Senopati</div>
         </a>
 
         <!-- Divider -->
@@ -43,7 +43,7 @@
         <!-- Nav Item - Dashboard -->
         <li class="nav-item {{ Nav::isRoute('home') }}">
             <a class="nav-link" href="{{ route('home') }}">
-                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <i class="fa-solid fa-table-columns"></i>
                 <span>{{ __('Dashboard') }}</span></a>
         </li>
 
@@ -52,7 +52,7 @@
 
         <!-- Heading -->
         <div class="sidebar-heading">
-            {{ __('Settings') }}
+            {{ __('menu') }}
         </div>
 
         <!-- Nav Item - Profile -->
@@ -63,11 +63,65 @@
             </a>
         </li>
 
-        <!-- Nav Item - About -->
-        <li class="nav-item {{ Nav::isRoute('about') }}">
-            <a class="nav-link" href="{{ route('about') }}">
-                <i class="fas fa-fw fa-hands-helping"></i>
-                <span>{{ __('About') }}</span>
+        <li class="nav-item {{ Nav::isRoute('daftar_pemeriksaan') }}">
+            <a class="nav-link" href="{{ route('daftar_pemeriksaan') }}">
+                <i class="fa-solid fa-file-invoice"></i>
+                <span>{{ __('Daftar Pemeriksaan') }}</span>
+            </a>
+        </li>
+
+        <!-- Nav Item - Pemeriksaan Dropdown -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePemeriksaan" aria-expanded="true" aria-controls="collapsePemeriksaan">
+                <i class="fa-solid fa-vials"></i>
+                <span>{{ __('Pemeriksaan') }}</span>
+            </a>
+            <div id="collapsePemeriksaan" class="collapse" aria-labelledby="headingPemeriksaan" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">{{ __('Jenis Pemeriksaan') }}</h6>
+                    <a class="collapse-item" href="{{ route('pengambilan_sampel') }}">{{ __('Pengambilan Sampel') }}</a>
+                    <a class="collapse-item" href="{{ route('hematologi') }}">{{ __('Hematologi') }}</a>
+                    <a class="collapse-item" href="{{ route('kimia_darah') }}">{{ __('Kimia Darah') }}</a>
+                    <a class="collapse-item" href="{{ route('urinalisis') }}">{{ __('Urinalisis') }}</a>
+                    <a class="collapse-item" href="{{ route('imunoserologi') }}">{{ __('Imunoserologi') }}</a>
+                    <a class="collapse-item" href="{{ route('mikrobiologi') }}">{{ __('Mikrobiologi') }}</a>
+                    <a class="collapse-item" href="{{ route('lain_lain') }}">{{ __('Lain-lain') }}</a>
+                </div>
+            </div>
+        </li>
+
+
+
+        <li class="nav-item {{ Nav::isRoute('riwayat_pemeriksaan') }}">
+            <a class="nav-link" href="{{ route('riwayat_pemeriksaan') }}">
+                <i class="fa-solid fa-address-book"></i>
+                <span>{{ __('Riwayat Pemeriksaan') }}</span>
+            </a>
+        </li>
+        <li class="nav-item {{ Nav::isRoute('pembayaran') }}">
+            <a class="nav-link" href="{{ route('pembayaran') }}">
+                <i class="fa-solid fa-money-bill"></i>
+                <span>{{ __('Pembayaran') }}</span>
+            </a>
+        </li>
+        <!-- Nav Item - Reagen Dropdown -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseReagen" aria-expanded="true" aria-controls="collapseReagen">
+                <i class="fa-solid fa-flask"></i>
+                <span>{{ __('Stok Reagen') }}</span>
+            </a>
+            <div id="collapseReagen" class="collapse" aria-labelledby="headingReagen" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <a class="collapse-item" href="{{ route('stok_reagen') }}">{{ __('Stok Reagen') }}</a>
+                    <a class="collapse-item" href="{{ route('reagen_masuk') }}">{{ __('Reagen Masuk') }}</a>
+                    <a class="collapse-item" href="{{ route('reagen_keluar') }}">{{ __('Reagen Keluar') }}</a>
+                </div>
+            </div>
+        </li>
+        <li class="nav-item {{ Nav::isRoute('kalibrasi_alat') }}">
+            <a class="nav-link" href="{{ route('kalibrasi_alat') }}">
+                <i class="fa-solid fa-file-contract"></i>
+                <span>{{ __('Kalibrasi Alat') }}</span>
             </a>
         </li>
 
@@ -180,62 +234,6 @@
                         </div>
                     </li>
 
-                    <!-- Nav Item - Messages -->
-                    <li class="nav-item dropdown no-arrow mx-1">
-                        <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fas fa-envelope fa-fw"></i>
-                            <!-- Counter - Messages -->
-                            <span class="badge badge-danger badge-counter">7</span>
-                        </a>
-                        <!-- Dropdown - Messages -->
-                        <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
-                            <h6 class="dropdown-header">
-                                Message Center
-                            </h6>
-                            <a class="dropdown-item d-flex align-items-center" href="#">
-                                <div class="dropdown-list-image mr-3">
-                                    <img class="rounded-circle" src="https://source.unsplash.com/fn_BT9fwg_E/60x60" alt="">
-                                    <div class="status-indicator bg-success"></div>
-                                </div>
-                                <div class="font-weight-bold">
-                                    <div class="text-truncate">Hi there! I am wondering if you can help me with a problem I've been having.</div>
-                                    <div class="small text-gray-500">Emily Fowler · 58m</div>
-                                </div>
-                            </a>
-                            <a class="dropdown-item d-flex align-items-center" href="#">
-                                <div class="dropdown-list-image mr-3">
-                                    <img class="rounded-circle" src="https://source.unsplash.com/AU4VPcFN4LE/60x60" alt="">
-                                    <div class="status-indicator"></div>
-                                </div>
-                                <div>
-                                    <div class="text-truncate">I have the photos that you ordered last month, how would you like them sent to you?</div>
-                                    <div class="small text-gray-500">Jae Chun · 1d</div>
-                                </div>
-                            </a>
-                            <a class="dropdown-item d-flex align-items-center" href="#">
-                                <div class="dropdown-list-image mr-3">
-                                    <img class="rounded-circle" src="https://source.unsplash.com/CS2uCrpNzJY/60x60" alt="">
-                                    <div class="status-indicator bg-warning"></div>
-                                </div>
-                                <div>
-                                    <div class="text-truncate">Last month's report looks great, I am very happy with the progress so far, keep up the good work!</div>
-                                    <div class="small text-gray-500">Morgan Alvarez · 2d</div>
-                                </div>
-                            </a>
-                            <a class="dropdown-item d-flex align-items-center" href="#">
-                                <div class="dropdown-list-image mr-3">
-                                    <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60" alt="">
-                                    <div class="status-indicator bg-success"></div>
-                                </div>
-                                <div>
-                                    <div class="text-truncate">Am I a good boy? The reason I ask is because someone told me that people say this to all dogs, even if they aren't good...</div>
-                                    <div class="small text-gray-500">Chicken the Dog · 2w</div>
-                                </div>
-                            </a>
-                            <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
-                        </div>
-                    </li>
-
                     <div class="topbar-divider d-none d-sm-block"></div>
 
                     <!-- Nav Item - User Information -->
@@ -250,17 +248,10 @@
                                 <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                 {{ __('Profile') }}
                             </a>
-                            <a class="dropdown-item" href="javascript:void(0)">
-                                <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                {{ __('Settings') }}
-                            </a>
-                            <a class="dropdown-item" href="javascript:void(0)">
-                                <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                                {{ __('Activity Log') }}
                             </a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                            <a class="dropdown-item text-danger" href="#" data-toggle="modal" data-target="#logoutModal">
+                                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-danger"></i>
                                 {{ __('Logout') }}
                             </a>
                         </div>
@@ -286,7 +277,7 @@
         <footer class="sticky-footer bg-white">
             <div class="container my-auto">
                 <div class="copyright text-center my-auto">
-                    <span>Maintained by <a href="https://github.com/aleckrh" target="_blank">AleckRH</a>. {{ now()->year }}</span>
+                    <span>Maintained by <a href="https://github.com/lunaisme" target="_blank">WEB-SIL</a>. {{ now()->year }}</span>
                 </div>
             </div>
         </footer>
@@ -307,12 +298,12 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">{{ __('Ready to Leave?') }}</h5>
+                <h5 class="modal-title" id="exampleModalLabel">{{ __('Ingin keluar?') }}</h5>
                 <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
             </div>
-            <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+            <div class="modal-body">Pilih "Logout" untuk mengakhiri sesi anda.</div>
             <div class="modal-footer">
                 <button class="btn btn-link" type="button" data-dismiss="modal">{{ __('Cancel') }}</button>
                 <a class="btn btn-danger" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>

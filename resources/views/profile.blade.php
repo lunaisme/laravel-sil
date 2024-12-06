@@ -41,27 +41,31 @@
                             </div>
                         </div>
                     </div>
-
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="card-profile-stats">
-                                <span class="heading">22</span>
-                                <span class="description">Friends</span>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card-profile-stats">
-                                <span class="heading">10</span>
-                                <span class="description">Photos</span>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card-profile-stats">
-                                <span class="heading">89</span>
-                                <span class="description">Comments</span>
-                            </div>
-                        </div>
-                    </div>
+                </div>
+            </div>
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Daftar Petugas</h6>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group mb-2">
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                Nama Petugas
+                                <span class="badge badge-primary badge-pill">Jabatan</span>
+                            </li>
+                    </ul>
+                    <ul class="list-group mb-2">
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                Nama Petugas
+                                <span class="badge badge-primary badge-pill">Jabatan</span>
+                            </li>
+                    </ul>
+                    <ul class="list-group mb-2">
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                Nama Petugas
+                                <span class="badge badge-primary badge-pill">Jabatan</span>
+                            </li>
+                    </ul>
                 </div>
             </div>
 
@@ -72,7 +76,7 @@
             <div class="card shadow mb-4">
 
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">My Account</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Akun Saya</h6>
                 </div>
 
                 <div class="card-body">
@@ -82,24 +86,47 @@
 
                         <input type="hidden" name="_method" value="PUT">
 
-                        <h6 class="heading-small text-muted mb-4">User information</h6>
+                        <h6 class="heading-small text-muted mb-4">Informasi Pengguna</h6>
 
                         <div class="pl-lg-4">
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="form-group focused">
-                                        <label class="form-control-label" for="name">Name<span class="small text-danger">*</span></label>
+                                        <label class="form-control-label" for="name">Nama Lengkap<span class="small text-danger">*</span></label>
                                         <input type="text" id="name" class="form-control" name="name" placeholder="Name" value="{{ old('name', Auth::user()->name) }}">
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group focused">
-                                        <label class="form-control-label" for="last_name">Last name</label>
+                                        <label class="form-control-label" for="last_name">Gelar</label>
                                         <input type="text" id="last_name" class="form-control" name="last_name" placeholder="Last name" value="{{ old('last_name', Auth::user()->last_name) }}">
                                     </div>
                                 </div>
                             </div>
 
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group focused">
+                                        <label class="form-control-label" for="name">NIP<span class="small text-danger">*</span></label>
+                                        <input type="text" id="name" class="form-control" name="name" placeholder="Name" value="{{ old('name', Auth::user()->name) }}">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group focused">
+                                        <label class="form-control-label" for="last_name">NIK<span class="small text-danger">*</span></label>
+                                        <input type="text" id="last_name" class="form-control" name="last_name" placeholder="Last name" value="{{ old('last_name', Auth::user()->last_name) }}">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="email">Jabatan<span class="small text-danger">*</span></label>
+                                        <input type="email" id="email" class="form-control" name="email" placeholder="example@example.com" value="{{ old('email', Auth::user()->email) }}">
+                                    </div>
+                                </div>
+                            </div>
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="form-group">

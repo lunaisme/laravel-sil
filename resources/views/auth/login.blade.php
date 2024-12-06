@@ -3,12 +3,11 @@
 @section('main-content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-xl-10 col-lg-12 col-md-9">
-            <div class="card o-hidden border-0 shadow-lg my-5">
+        <div class="col-xl-6 col-lg-12 col-md-9">
+            <div class="card o-hidden border-0 shadow-lg my-5" style="background-color: rgba(255, 255, 255, 0.8);">
                 <div class="card-body p-0">
-                    <div class="row">
-                        <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
-                        <div class="col-lg-6">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-12">
                             <div class="p-5">
                                 <div class="text-center">
                                     <h1 class="h4 text-gray-900 mb-4">{{ __('Login') }}</h1>
@@ -34,7 +33,13 @@
                                     <div class="form-group">
                                         <input type="password" class="form-control form-control-user" name="password" placeholder="{{ __('Password') }}" required>
                                     </div>
-
+                                    <div class="form-group">
+                                        <label for="role">Login Sebagai</label>
+                                        <select class="form-control rounded-pill" name="role" id="role" required>
+                                            <option value="admin" {{ old('role') == 'admin' ? 'selected' : '' }}>Admin</option>
+                                            <option value="atlm" {{ old('role') == 'atlm' ? 'selected' : '' }}>ATLM</option>
+                                        </select>
+                                    </div>
                                     <div class="form-group">
                                         <div class="custom-control custom-checkbox small">
                                             <input type="checkbox" class="custom-control-input" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
@@ -47,43 +52,24 @@
                                             {{ __('Login') }}
                                         </button>
                                     </div>
-
-                                    <hr>
-
-                                    <div class="form-group">
-                                        <button type="button" class="btn btn-github btn-user btn-block">
-                                            <i class="fab fa-github fa-fw"></i> {{ __('Login with GitHub') }}
-                                        </button>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <button type="button" class="btn btn-twitter btn-user btn-block">
-                                            <i class="fab fa-twitter fa-fw"></i> {{ __('Login with Twitter') }}
-                                        </button>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <button type="button" class="btn btn-facebook btn-user btn-block">
-                                            <i class="fab fa-facebook-f fa-fw"></i> {{ __('Login with Facebook') }}
-                                        </button>
-                                    </div>
                                 </form>
 
                                 <hr>
-
-                                @if (Route::has('password.request'))
-                                    <div class="text-center">
+                                <div class="d-flex justify-content-between">
+                                    @if (Route::has('password.request'))
+                                    <div class="text-start">
                                         <a class="small" href="{{ route('password.request') }}">
                                             {{ __('Forgot Password?') }}
                                         </a>
                                     </div>
-                                @endif
+                                    @endif
 
-                                @if (Route::has('register'))
-                                    <div class="text-center">
+                                    @if (Route::has('register'))
+                                    <div class="text-end ms-auto">
                                         <a class="small" href="{{ route('register') }}">{{ __('Create an Account!') }}</a>
                                     </div>
-                                @endif
+                                    @endif
+                                </div>  
                             </div>
                         </div>
                     </div>
