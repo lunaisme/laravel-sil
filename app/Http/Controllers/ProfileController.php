@@ -14,10 +14,13 @@ class ProfileController extends Controller
         $this->middleware('auth');
     }
 
+    // ProfileController.php
     public function index()
     {
-        return view('profile');
+        $users = User::all(); // Mengambil semua data pengguna
+        return view('profile', compact('users')); // Mengirim data ke view
     }
+
 
     public function update(Request $request)
     {

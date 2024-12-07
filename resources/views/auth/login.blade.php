@@ -9,8 +9,9 @@
                     <div class="row justify-content-center">
                         <div class="col-lg-12">
                             <div class="p-5">
+                                    <x-kemenkes-logo class="img-fluid mx-auto d-block" />
                                 <div class="text-center">
-                                    <h1 class="h4 text-gray-900 mb-4">{{ __('Login') }}</h1>
+                                    <h1 class="h3 text-gray-900 font-weight-bold mb-4 mt-0">{{ __('SISTEM INFORMASI LABORATORIUM RSUD SENOPATI') }}</h1>
                                 </div>
 
                                 @if ($errors->any())

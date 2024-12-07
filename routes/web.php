@@ -80,3 +80,7 @@ Route::get('/mikrobiologi', function () {
 Route::get('/lain_lain', function () {
     return view('lain_lain');
 })->name('lain_lain');
+
+Route::get('/detail_pemeriksaan', function () {
+    return view('detail_pemeriksaan');
+})->name('detail_pemeriksaan');

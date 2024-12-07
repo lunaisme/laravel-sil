@@ -1,0 +1,1 @@
+    <img src="https://kemkes.go.id/app_asset/file_content_download/170619174165b26b7d195019.13538774.png" alt="Kemenkes Logo" {{ $attributes }} style="max-height: 10rem;" />

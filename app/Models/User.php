@@ -17,7 +17,12 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'last_name', 'email', 'password',
+        'name',
+        'email',
+        'nik',
+        'nip',
+        'jabatan',
+        'password',
     ];
 
     /**
@@ -26,7 +31,8 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password',
+        'remember_token',
     ];
 
     /**
@@ -38,19 +44,19 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    /**
-     * Get the user's full name.
-     *
-     * @return string
-     */
-    public function getFullNameAttribute()
-    {
-        if (is_null($this->last_name)) {
-            return "{$this->name}";
-        }
+    // /**
+    //  * Get the user's full name.
+    //  *
+    //  * @return string
+    //  */
+    // public function getFullNameAttribute()
+    // {
+    //     if (is_null($this->last_name)) {
+    //         return "{$this->name}";
+    //     }
 
-        return "{$this->name} {$this->last_name}";
-    }
+    //     return "{$this->name} {$this->last_name}";
+    // }
 
     /**
      * Set the user's password.

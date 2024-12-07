@@ -10,7 +10,7 @@
                         <div class="col-lg-12">
                             <div class="p-5">
                                 <div class="text-center">
-                                    <h1 class="h4 text-gray-900 mb-4">{{ __('Register') }}</h1>
+                                    <h1 class="h2 font-weight-bold text-gray-900 mb-4">{{ __('Register') }}</h1>
                                 </div>
 
                                 @if ($errors->any())
@@ -25,27 +25,35 @@
 
                                 <form method="POST" action="{{ route('register') }}" class="user">
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
-
+                                
                                     <div class="form-group">
-                                        <input type="text" class="form-control form-control-user" name="name" placeholder="{{ __('Name') }}" value="{{ old('name') }}" required autofocus>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <input type="text" class="form-control form-control-user" name="last_name" placeholder="{{ __('Last Name') }}" value="{{ old('last_name') }}" required>
+                                        <input type="text" class="form-control form-control-user" name="name" placeholder="Nama Lengkap" value="{{ old('name') }}" required autofocus>
                                     </div>
 
                                     <div class="form-group">
                                         <input type="email" class="form-control form-control-user" name="email" placeholder="{{ __('E-Mail Address') }}" value="{{ old('email') }}" required>
                                     </div>
-
+                                
                                     <div class="form-group">
-                                        <input type="password" class="form-control form-control-user" name="password" placeholder="{{ __('Password') }}" required>
+                                        <input type="text" class="form-control form-control-user" name="nik" placeholder="NIK" value="{{ old('nik') }}" required>
                                     </div>
-
+                                
                                     <div class="form-group">
-                                        <input type="password" class="form-control form-control-user" name="password_confirmation" placeholder="{{ __('Confirm Password') }}" required>
+                                        <input type="text" class="form-control form-control-user" name="nip" placeholder="NIP" value="{{ old('nip') }}" required>
                                     </div>
-
+                                
+                                    <div class="form-group">
+                                        <input type="text" class="form-control form-control-user" name="jabatan" placeholder="Jabatan" value="{{ old('jabatan') }}" required>
+                                    </div>
+                                
+                                    <div class="form-group">
+                                        <input type="password" class="form-control form-control-user" name="password" placeholder="Password" required>
+                                    </div>
+                                
+                                    <div class="form-group">
+                                        <input type="password" class="form-control form-control-user" name="password_confirmation" placeholder="Konfirmasi Password" required>
+                                    </div>
+                                
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-primary btn-user btn-block">
                                             {{ __('Register') }}

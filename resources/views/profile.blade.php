@@ -36,8 +36,8 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="text-center">
-                                <h5 class="font-weight-bold">{{  Auth::user()->fullName }}</h5>
-                                <p>Administrator</p>
+                                <h5 class="font-weight-bold">{{  Auth::user()->name }}</h5>
+                                <p>{{ old('jabatan', Auth::user()->jabatan) }}</p>
                             </div>
                         </div>
                     </div>
@@ -48,26 +48,21 @@
                     <h6 class="m-0 font-weight-bold text-primary">Daftar Petugas</h6>
                 </div>
                 <div class="card-body">
-                    <ul class="list-group mb-2">
-                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                Nama Petugas
-                                <span class="badge badge-primary badge-pill">Jabatan</span>
-                            </li>
-                    </ul>
-                    <ul class="list-group mb-2">
-                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                Nama Petugas
-                                <span class="badge badge-primary badge-pill">Jabatan</span>
-                            </li>
-                    </ul>
-                    <ul class="list-group mb-2">
-                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                Nama Petugas
-                                <span class="badge badge-primary badge-pill">Jabatan</span>
-                            </li>
-                    </ul>
+                    @if ($users->isEmpty())
+                        <p class="text-muted">Tidak ada petugas yang terdaftar.</p>
+                    @else
+                        <ul class="list-group">
+                            @foreach ($users as $user)
+                                <li class="list-group-item d-flex justify-content-between align-items-center mb-2">
+                                    {{ $user->name }}
+                                    <span class="badge badge-primary badge-pill">{{ $user->jabatan }}</span>
+                                </li>
+                            @endforeach
+                        </ul>
+                    @endif
                 </div>
             </div>
+            
 
         </div>
 
@@ -98,8 +93,8 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group focused">
-                                        <label class="form-control-label" for="last_name">Gelar</label>
-                                        <input type="text" id="last_name" class="form-control" name="last_name" placeholder="Last name" value="{{ old('last_name', Auth::user()->last_name) }}">
+                                        <label class="form-control-label" for="jabatan">Jabatan<span class="small text-danger">*</span></label>
+                                        <input type="text" id="jabatan" class="form-control" name="jabatan" placeholder="Last name" value="{{ old('jabatan', Auth::user()->jabatan) }}">
                                     </div>
                                 </div>
                             </div>
@@ -108,22 +103,13 @@
                                 <div class="col-lg-6">
                                     <div class="form-group focused">
                                         <label class="form-control-label" for="name">NIP<span class="small text-danger">*</span></label>
-                                        <input type="text" id="name" class="form-control" name="name" placeholder="Name" value="{{ old('name', Auth::user()->name) }}">
+                                        <input type="text" id="nip" class="form-control" name="nip" placeholder="NIP" value="{{ old('name', Auth::user()->nip) }}">
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group focused">
                                         <label class="form-control-label" for="last_name">NIK<span class="small text-danger">*</span></label>
-                                        <input type="text" id="last_name" class="form-control" name="last_name" placeholder="Last name" value="{{ old('last_name', Auth::user()->last_name) }}">
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <div class="form-group">
-                                        <label class="form-control-label" for="email">Jabatan<span class="small text-danger">*</span></label>
-                                        <input type="email" id="email" class="form-control" name="email" placeholder="example@example.com" value="{{ old('email', Auth::user()->email) }}">
+                                        <input type="text" id="nik" class="form-control" name="nik" placeholder="NIK" value="{{ old('nik', Auth::user()->nik) }}">
                                     </div>
                                 </div>
                             </div>
