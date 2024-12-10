@@ -56,31 +56,31 @@ Route::get('/reagen_masuk', [StokController::class, 'recapMasuk'])->name('reagen
 Route::get('/reagen_keluar', [StokController::class, 'recapKeluar'])->name('reagen_keluar');
 
 
-// ini route ga jelas belum dikerjakan
-Route::get('/pengambilan_sampel', function () {
-    return view('pengambilan_sampel');
-})->name('pengambilan_sampel');
+// // ini route ga jelas belum dikerjakan
+// Route::get('/pengambilan_sampel', function () {
+//     return view('pengambilan_sampel');
+// })->name('pengambilan_sampel');
 
-Route::get('/hematologi', function () {
-    return view('hematologi');
-})->name('hematologi');
+// Route::get('/hematologi', function () {
+//     return view('hematologi');
+// })->name('hematologi');
 
-Route::get('/kimia_darah', function () {
-    return view('kimia_darah');
-})->name('kimia_darah');
+// Route::get('/kimia_darah', function () {
+//     return view('kimia_darah');
+// })->name('kimia_darah');
 
-Route::get('/urinalisis', function () {
-    return view('urinalisis');
-})->name('urinalisis');
+// Route::get('/urinalisis', function () {
+//     return view('urinalisis');
+// })->name('urinalisis');
 
-Route::get('/imunoserologi', function () {
-    return view('imunoserologi');
-})->name('imunoserologi');
+// Route::get('/imunoserologi', function () {
+//     return view('imunoserologi');
+// })->name('imunoserologi');
 
-Route::get('/mikrobiologi', function () {
-    return view('mikrobiologi');
-})->name('mikrobiologi');
+// Route::get('/mikrobiologi', function () {
+//     return view('mikrobiologi');
+// })->name('mikrobiologi');
 
-Route::get('/lain_lain', function () {
-    return view('lain_lain');
-})->name('lain_lain');
+// Route::get('/lain_lain', function () {
+//     return view('lain_lain');
+// })->name('lain_lain');

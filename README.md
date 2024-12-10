@@ -1,83 +1,98 @@
-# Laravel SB Admin 2
+# Laravel-Sil
 
-SB Admin 2 for Laravel.
+Proyek ini adalah aplikasi berbasis Laravel untuk mengelola informasi yang ada di dalam laboratorium, seperti pemeriksaan, pengelolaan alat, pengujian, dan lain-lain.
 
-| Laravel Version | Branch | Support     |
-|-----------------|--------|-------------|
-| 11.0            | main   |             |
-| 10.0            | v10.0  |             |
-| 9.0             | v9.0   | End of life |
-| 8.0             | v8.0   | End of life |
+## Prerequisites
 
-## Requirements
+Sebelum memulai, pastikan Anda memiliki hal-hal berikut:
 
-- PHP >= 8.2
-- Ctype PHP Extension
-- cURL PHP Extension
-- DOM PHP Extension
-- Fileinfo PHP Extension
-- Filter PHP Extension
-- Hash PHP Extension
-- Mbstring PHP Extension
-- OpenSSL PHP Extension
-- PCRE PHP Extension
-- PDO PHP Extension
-- Session PHP Extension
-- Tokenizer PHP Extension
-- XML PHP Extension
+-   [Laragon] terinstal di sistem Anda.
+-   [Composer] terinstal (Laragon biasanya sudah menyertakannya).
+-   PHP dan MySQL yang sudah terkonfigurasi dengan baik.
 
-## Installation
+## Cara Mengkloning Proyek
 
-- Clone the repo and `cd` into it
-- Run `composer install`
-- Rename or copy `.env.example` file to `.env`
-- Run `php artisan key:generate`
-- Set your database credentials in your `.env` file
+Berikut adalah panduan yang diperbarui untuk mengkloning repositori menggunakan ZIP di GitHub, serta mengganti langkah-langkah yang relevan:
 
-## Note
+### Cara Mengkloning Repositori
 
-Recommend to install this preset on a project that you are starting from scratch, otherwise your project's design might break.
+#### Metode 1: Menggunakan Git
 
-If you found this project useful, then please consider giving it a :star:
+1. **Kloning Repositori**
 
-## Credits
+    Buka terminal dan jalankan perintah berikut:
 
-Laravel SB Admin 2 uses some open-source third-party libraries/packages, many thanks to the web community.
+    ```bash
+    git clone https://github.com/lunaisme/laravel-sil.git
+    ```
 
-- Laravel - Open source framework.
-- LaravelEasyNav - Making managing navigation in Laravel easy.
-- SB Admin 2 - Thanks to Start Bootstrap.
+2. **Navigasi ke Direktori Proyek**
 
-## Preview
+    ```bash
+    cd laravel-sil
+    ```
 
-`login`
+3. **Instalasi Dependensi**
 
-<img src="https://imgur.com/YjGp6Sbl.png">
+    Jalankan perintah berikut untuk menginstal dependensi proyek:
 
-***
+    ```bash
+    composer install
+    ```
 
-`register`
+#### Metode 2: Menggunakan ZIP
 
-<img src="https://imgur.com/Wj09cu4l.png">
+1. **Unduh ZIP**
 
-***
+    - Kunjungi halaman repositori di GitHub: [https://github.com/lunaisme/laravel-sil](https://github.com/lunaisme/laravel-sil).
+    - Klik tombol **Code** dan pilih **Download ZIP**.
 
-`dashboard`
+2. **Ekstrak ZIP**
 
-<img src="https://imgur.com/CrmOfT5l.png">
+    - Setelah unduhan selesai, ekstrak file ZIP ke lokasi yang Anda inginkan.
 
-***
+3. **Navigasi ke Direktori Proyek**
 
-`profile`
+    Buka terminal dan arahkan ke direktori tempat Anda mengekstrak file ZIP:
 
-<img src="https://imgur.com/5t4eS1rl.png">
+    ```bash
+    cd path/to/laravel-sil
+    ```
 
-***
+    Gantilah `path/to` dengan jalur ke folder tempat Anda mengekstrak file.
 
-`logout`
+4. **Instalasi Dependensi**
 
-<img src="https://imgur.com/d9JclOYl.png">
+    Jalankan perintah berikut untuk menginstal dependensi proyek:
 
-## License
+```bash
+composer install
+```
 
-Licensed under the [MIT](LICENSE) license.
+Copy the `.env.example` file to `.env`:
+
+```bash
+cp .env.example .env
+```
+
+Kemudian, buka file `.env` dan sesuaikan pengaturan database Anda sesuai dengan konfigurasi Laragon.
+
+Generate Kunci Aplikasi Jalankan perintah berikut untuk menghasilkan kunci aplikasi:
+
+```bash
+php artisan key:generate
+```
+
+Migrasi Database Jika proyek Anda menggunakan migrasi, jalankan perintah berikut untuk membuat tabel di database:
+
+```bash
+php artisan migrate
+```
+
+Jalankan Server Jika Anda menggunakan Laragon, Anda dapat menjalankan server dengan mengakses URL proyek di browser, seperti `http://laravel-sil.test`.
+
+# Cara Menggunakan
+
+```bash
+php artisan serve
+```
