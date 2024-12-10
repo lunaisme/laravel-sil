@@ -94,7 +94,7 @@
                                 <div class="col-lg-6">
                                     <div class="form-group focused">
                                         <label class="form-control-label" for="jabatan">Jabatan<span class="small text-danger">*</span></label>
-                                        <input type="text" id="jabatan" class="form-control" name="jabatan" placeholder="Last name" value="{{ old('jabatan', Auth::user()->jabatan) }}">
+                                        <input type="text" id="jabatan" class="form-control" name="jabatan" placeholder="jabatan" value="{{ old('jabatan', Auth::user()->jabatan) }}">
                                     </div>
                                 </div>
                             </div>
@@ -108,7 +108,7 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group focused">
-                                        <label class="form-control-label" for="last_name">NIK<span class="small text-danger">*</span></label>
+                                        <label class="form-control-label" for="nik">NIK<span class="small text-danger">*</span></label>
                                         <input type="text" id="nik" class="form-control" name="nik" placeholder="NIK" value="{{ old('nik', Auth::user()->nik) }}">
                                     </div>
                                 </div>

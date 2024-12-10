@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\StokController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,8 +26,12 @@ Route::get('/profile', 'ProfileController@index')->name('profile');
 Route::put('/profile', 'ProfileController@update')->name('profile.update');
 
 Route::get('/daftar_pemeriksaan', function () {
-    return view('daftar_pemeriksaan');
+    return view('daftar_pemeriksaan.daftar_pemeriksaan');
 })->name('daftar_pemeriksaan');
+Route::get('/detail_pemeriksaan', function () {
+    return view('daftar_pemeriksaan.detail_pemeriksaan');
+})->name('detail_pemeriksaan');
+
 Route::get('/pemeriksaan', function () {
     return view('pemeriksaan');
 })->name('pemeriksaan');
@@ -35,21 +41,19 @@ Route::get('/riwayat_pemeriksaan', function () {
 Route::get('/pembayaran', function () {
     return view('pembayaran');
 })->name('pembayaran');
-Route::get('/stok_reagen', function () {
-    return view('stok_reagen');
-})->name('stok_reagen');
+
 Route::get('/kalibrasi_alat', function () {
     return view('kalibrasi_alat');
 })->name('kalibrasi_alat');
 
 
-Route::get('/reagen_masuk', function () {
-    return view('reagen_masuk');
-})->name('reagen_masuk');
+// route untuk reagen
+Route::get('/stok_reagen', [StokController::class, 'index'])->name('stok_reagen');
+Route::get('/stok_reagen/create', [StokController::class, 'create'])->name('stok_reagen.create');
+Route::post('/stok_reagen/store', [StokController::class, 'store'])->name('stok_reagen.store');
 
-Route::get('/reagen_keluar', function () {
-    return view('reagen_keluar');
-})->name('reagen_keluar');
+Route::get('/reagen_masuk', [StokController::class, 'recapMasuk'])->name('reagen_masuk');
+Route::get('/reagen_keluar', [StokController::class, 'recapKeluar'])->name('reagen_keluar');
 
 
 // ini route ga jelas belum dikerjakan
@@ -80,7 +84,3 @@ Route::get('/mikrobiologi', function () {
 Route::get('/lain_lain', function () {
     return view('lain_lain');
 })->name('lain_lain');
-
-Route::get('/detail_pemeriksaan', function () {
-    return view('detail_pemeriksaan');
-})->name('detail_pemeriksaan');

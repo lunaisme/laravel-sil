@@ -31,7 +31,8 @@
 </body>
 <style>
     body{
-        background: url('https://images.unsplash.com/photo-1495202337139-e865ed70fcd4?q=80&w=1476&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center fixed;
+        background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6t-rCUiijhrTAlM6ReCE9Rh4wqy3PqY_R5MQJ3X1uKHpQUgzOS_PeqWHL6D1Qyu76BUQ&usqp=CAU') no-repeat center center fixed;
+        background-size: cover;
     }
 </style>
 </html>

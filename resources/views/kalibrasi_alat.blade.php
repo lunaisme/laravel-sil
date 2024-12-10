@@ -11,6 +11,14 @@ $kalibrasiAlats = collect([
         'tgl_kalibrasi_ulang' => '2024-01-01'
     ],
     (object)[
+        'no' => 1,
+        'kode_alat' => 'A001',
+        'nama_alat' => 'Mikroskop',
+        'tgl_kalibrasi' => '2023-01-01',
+        'status' => 'Sedang Kalibrasi',
+        'tgl_kalibrasi_ulang' => '2024-01-01'
+    ],
+    (object)[
         'no' => 2,
         'kode_alat' => 'A002',
         'nama_alat' => 'Alat Ukur 2',
