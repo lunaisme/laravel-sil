@@ -6,8 +6,8 @@ Proyek ini adalah aplikasi berbasis Laravel untuk mengelola informasi yang ada d
 
 Sebelum memulai, pastikan Anda memiliki hal-hal berikut:
 
--   [Laragon] terinstal di sistem Anda.
--   [Composer] terinstal (Laragon biasanya sudah menyertakannya).
+- [Laragon](https://laragon.org/) terinstal di sistem Anda.
+- [Composer](https://getcomposer.org/) terinstal (Laragon biasanya sudah menyertakannya).
 -   PHP dan MySQL yang sudah terkonfigurasi dengan baik.
 
 ## Cara Mengkloning Proyek
