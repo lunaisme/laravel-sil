@@ -6,6 +6,8 @@ Proyek ini adalah aplikasi berbasis Laravel untuk mengelola informasi yang ada d
 
 Sebelum memulai, pastikan Anda memiliki hal-hal berikut:
 
+- [Visual Studio Code](https://code.visualstudio.com/) untuk pengembangan.
+- [Git Bash](https://git-scm.com/downloads) untuk manajemen versi.
 - [Laragon](https://laragon.org/) terinstal di sistem Anda.
 - [Composer](https://getcomposer.org/) terinstal (Laragon biasanya sudah menyertakannya).
 -   PHP dan MySQL yang sudah terkonfigurasi dengan baik.
