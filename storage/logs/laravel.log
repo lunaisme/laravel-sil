@@ -7459,3 +7459,7 @@ into your web browser: <span class="break-all" style="box-sizing: border-box; fo
 [stacktrace]
 #0 {main}
 "} 
+[2024-12-10 14:11:30] local.ERROR: Cannot declare class App\Models\Transaksi, because the name is already in use {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Cannot declare class App\\Models\\Transaksi, because the name is already in use at D:\\01-focused\\laravel-sil\\app\\Models\\transaksis.php:8)
+[stacktrace]
+#0 {main}
+"} 
