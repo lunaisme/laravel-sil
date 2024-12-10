@@ -118,12 +118,13 @@
                 </div>
             </div>
         </li>
-        <li class="nav-item {{ Nav::isRoute('kalibrasi_alat') }}">
-            <a class="nav-link" href="{{ route('kalibrasi_alat') }}">
+        <li class="nav-item {{ Nav::isRoute('kalibrasi.index') }}">
+            <a class="nav-link" href="{{ route('kalibrasi.index') }}">
                 <i class="fa-solid fa-file-contract"></i>
                 <span>{{ __('Kalibrasi Alat') }}</span>
             </a>
         </li>
+        
 
         <!-- Divider -->
         <hr class="sidebar-divider d-none d-md-block">

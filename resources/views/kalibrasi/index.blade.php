@@ -28,20 +28,25 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($kalibrasis as $alat)
+                        @if($kalibrasi->isEmpty())
+                        <tr>
+                            <td colspan="7" class="text-center">Tidak ada data kalibrasi.</td>
+                        </tr>
+                    @else
+                        @foreach($kalibrasi as $alat)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $alat->kode_alat }}</td>
                                 <td>{{ $alat->nama_alat }}</td>
                                 <td>{{ $alat->tanggal_kalibrasi }}</td>
                                 <td>
-                                    @if($alat->status == 'Baik')
+                                    @if($alat->status == 'baik')
                                         <span class="badge badge-success">{{ $alat->status }}</span>
-                                    @elseif($alat->status == 'Kurang Optimal')
+                                    @elseif($alat->status == 'kurang optimal')
                                         <span class="badge badge-danger">{{ $alat->status }}</span>
-                                    @elseif($alat->status == 'Menunggu Proses')
+                                    @elseif($alat->status == 'menunggu proses')
                                         <span class="badge badge-warning">{{ $alat->status }}</span>
-                                    @elseif($alat->status == 'Sedang Proses')
+                                    @elseif($alat->status == 'sedang proses')
                                         <span class="badge badge-info">{{ $alat->status }}</span>
                                     @else
                                         <span class="badge badge-dark">{{ $alat->status }}</span>
@@ -55,6 +60,7 @@
                                 </td>
                             </tr>
                         @endforeach
+                        @endif
                     </tbody>
                     
                 </table>
