@@ -12,43 +12,43 @@
             <table class="table table-borderless">
                 <tr>
                     <th>No</th>
-                    <td>1</td>
+                    <td>{{ $pasien->no }}</td>
                 </tr>
                 <tr>
                     <th>No RM</th>
-                    <td>4222014</td>
+                    <td>{{ $pasien->no_rm }}</td>
                 </tr>
                 <tr>
                     <th>Nama Pasien</th>
-                    <td>Min Yoongi</td>
+                    <td>{{ $pasien->nama_pasien }}</td>
                 </tr>
                 <tr>
                     <th>Jenis Kelamin</th>
-                    <td>Laki-laki</td>
+                    <td>{{ $pasien->jenis_kelamin }}</td>
                 </tr>
                 <tr>
                     <th>Tanggal Pemeriksaan</th>
-                    <td>11-10-2024</td>
+                    <td>{{ $pasien->tanggal_pemeriksaan }}</td>
                 </tr>
                 <tr>
                     <th>Jaminan</th>
-                    <td>UMUM</td>
+                    <td>{{ $pasien->jaminan }}</td>
                 </tr>
                 <tr>
                     <th>Jenis Pemeriksaan</th>
-                    <td>Gula Darah Sewaktu</td>
+                    <td>{{ $pasien->jenis_pemeriksaan }}</td>
                 </tr>
                 <tr>
                     <th>Dokter</th>
-                    <td>Dr Tina</td>
+                    <td>{{ $pasien->dokter }}</td>
                 </tr>
                 <tr>
                     <th>Pembayaran</th>
-                    <td class="text-danger">BELUM LUNAS</td>
+                    <td class="{{ $pasien->pembayaran == 'BELUM LUNAS' ? 'text-danger' : '' }}">{{ $pasien->pembayaran }}</td>
                 </tr>
                 <tr>
                     <th>Status Pemeriksaan</th>
-                    <td class="text-danger">BELUM DIPROSES</td>
+                    <td class="{{ $pasien->status_pemeriksaan == 'BELUM DIPROSES' ? 'text-danger' : '' }}">{{ $pasien->status_pemeriksaan }}</td>
                 </tr>
             </table>
         </div>

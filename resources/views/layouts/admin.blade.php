@@ -63,8 +63,8 @@
             </a>
         </li>
 
-        <li class="nav-item {{ Nav::isRoute('daftar_pemeriksaan') }}">
-            <a class="nav-link" href="{{ route('daftar_pemeriksaan') }}">
+        <li class="nav-item {{ Nav::isRoute('daftar_pemeriksaan.index') }}">
+            <a class="nav-link" href="{{ route('daftar_pemeriksaan.index') }}">
                 <i class="fa-solid fa-file-invoice"></i>
                 <span>{{ __('Daftar Pemeriksaan') }}</span>
             </a>

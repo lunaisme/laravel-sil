@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\StokController;
 use App\Http\Controllers\KalibrasiAlatController;
+use App\Http\Controllers\PasienController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +33,11 @@ Route::get('/daftar_pemeriksaan', function () {
 Route::get('/detail_pemeriksaan', function () {
     return view('daftar_pemeriksaan.detail_pemeriksaan');
 })->name('detail_pemeriksaan');
+Route::get('/daftar_pemeriksaan', [PasienController::class, 'index'])->name('daftar_pemeriksaan.index');
+Route::get('/daftar_pemeriksaan/create', [PasienController::class, 'create'])->name('daftar_pemeriksaan.create');
+Route::get('/detail_pemeriksaan', [PasienController::class, 'show'])->name('daftar_pemeriksaan.show');
+Route::post('/daftar_pemeriksaan/store', [PasienController::class, 'store'])->name('daftar_pemeriksaan.store');
+
 
 Route::get('/pemeriksaan', function () {
     return view('pemeriksaan');
@@ -88,3 +94,21 @@ Route::get('/mikrobiologi', function () {
 Route::get('/lain_lain', function () {
     return view('lain_lain');
 })->name('lain_lain');
+Route::get('/lain_lain', function () {
+    return view('lain_lain');
+})->name('lain_lain');
+
+use App\Http\Controllers\PatientController;
+use App\Http\Controllers\ExaminationController;
+
+// // Routes untuk pasien
+// Route::get('/patients', [PatientController::class, 'index'])->name('patients.index');
+// Route::get('/patients/create', [PatientController::class, 'create'])->name('patients.create');
+// Route::post('/patients/store', [PatientController::class, 'store'])->name('patients.store');
+// Route::get('/patients/{id}', [PatientController::class, 'show'])->name('patients.show');
+// Route::post('/patients/{id}/accept', [PatientController::class, 'accept'])->name('patients.accept');
+// Route::post('/patients/{id}/reject', [PatientController::class, 'reject'])->name('patients.reject');
+
+// // Routes untuk pemeriksaan
+// Route::get('/examinations', [ExaminationController::class, 'index'])->name('examinations.index');
+// Route::get('/examinations/{id}', [ExaminationController::class, 'show'])->name('examinations.show');
