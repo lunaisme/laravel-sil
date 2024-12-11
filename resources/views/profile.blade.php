@@ -29,8 +29,13 @@
 
             <div class="card shadow mb-4">
                 <div class="card-profile-image mt-4">
-                    <figure class="rounded-circle avatar avatar font-weight-bold" style="font-size: 60px; height: 180px; width: 180px;" data-initial="{{ Auth::user()->name[0] }}"></figure>
+                    @if (Auth::user()->profile_photo_path)
+                        <img src="{{ asset('storage/' . Auth::user()->profile_photo_path) }}" class="rounded-circle" style="height: 180px; width: 180px;" alt="Profile Photo">
+                    @else
+                        <figure class="rounded-circle avatar avatar font-weight-bold" style="font-size: 60px; height: 180px; width: 180px;" data-initial="{{ Auth::user()->name[0] }}"></figure>
+                    @endif
                 </div>
+                
                 <div class="card-body">
 
                     <div class="row">
@@ -113,6 +118,14 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="form-group focused">
+                                        <label class="form-control-label" for="photo">Foto Profil</label>
+                                        <input type="file" id="photo" class="form-control" name="photo" accept="image/*">
+                                    </div>
+                                </div>
+                            </div>                            
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="form-group">

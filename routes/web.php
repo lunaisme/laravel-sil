@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StokController;
 use App\Http\Controllers\KalibrasiAlatController;
 use App\Http\Controllers\PasienController;
+use App\Http\Controllers\HasilPemeriksaanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,8 +36,13 @@ Route::get('/detail_pemeriksaan', function () {
 })->name('detail_pemeriksaan');
 Route::get('/daftar_pemeriksaan', [PasienController::class, 'index'])->name('daftar_pemeriksaan.index');
 Route::get('/daftar_pemeriksaan/create', [PasienController::class, 'create'])->name('daftar_pemeriksaan.create');
-Route::get('/detail_pemeriksaan', [PasienController::class, 'show'])->name('daftar_pemeriksaan.show');
+Route::get('/detail_pemeriksaan/{pasien}', [PasienController::class, 'show'])->name('daftar_pemeriksaan.show');
 Route::post('/daftar_pemeriksaan/store', [PasienController::class, 'store'])->name('daftar_pemeriksaan.store');
+
+
+Route::get('/hasil_pemeriksaan/{pasienId}', [HasilPemeriksaanController::class, 'index'])->name('hasil_pemeriksaan.index');
+Route::post('/hasil_pemeriksaan/{pasienId}', [HasilPemeriksaanController::class, 'store'])->name('hasil_pemeriksaan.store');
+
 
 
 Route::get('/pemeriksaan', function () {

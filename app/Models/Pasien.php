@@ -13,11 +13,19 @@ class Pasien extends Model
 
     protected $fillable = [
         'kode',
-        'nama',
         'jenis_kelamin',
         'tgl_daftar',
         'jenis_pemeriksaan',
         'jaminan',
-        'dokter'
+        'dokter',
+        'no_rm',
+        'nama_pasien',
+        'tanggal_pemeriksaan',
+        'pembayaran',
+        'status_pemeriksaan'
     ];
+    public function hasilPemeriksaan()
+    {
+        return $this->hasMany(HasilPemeriksaan::class);
+    }
 }

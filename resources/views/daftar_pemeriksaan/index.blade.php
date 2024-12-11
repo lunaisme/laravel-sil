@@ -40,7 +40,7 @@
                                 <td>{{ $pasien->jaminan }}</td>
                                 <td>{{ $pasien->dokter }}</td>
                                 <td>
-                                    <a href="/detail_pemeriksaan" class="btn btn-info btn-sm">Detail</a>
+                                    <a href="{{ route('daftar_pemeriksaan.show', $pasien->id) }}" class="btn btn-info btn-sm">Detail</a>
                                 </td>
                             </tr>
                         @endforeach

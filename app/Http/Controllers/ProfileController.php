@@ -32,9 +32,9 @@ class ProfileController extends Controller
             'email' => 'required|string|email|max:255|unique:users,email,' . Auth::user()->id,
             'current_password' => 'nullable|required_with:new_password',
             'new_password' => 'nullable|min:8|max:12|required_with:current_password',
-            'password_confirmation' => 'nullable|min:8|max:12|required_with:new_password|same:new_password'
+            'password_confirmation' => 'nullable|min:8|max:12|required_with:new_password|same:new_password',
+            'profile_photo_path' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Validasi foto profil
         ]);
-
 
         $user = User::findOrFail(Auth::user()->id);
         $user->name = $request->input('name');
@@ -43,12 +43,25 @@ class ProfileController extends Controller
         $user->jabatan = $request->input('jabatan');
         $user->email = $request->input('email');
 
+
         if (!is_null($request->input('current_password'))) {
             if (Hash::check($request->input('current_password'), $user->password)) {
-                $user->password = $request->input('new_password');
+                $user->password = Hash::make($request->input('new_password'));
             } else {
-                return redirect()->back()->withInput();
+                return redirect()->back()->withErrors(['current_password' => 'Current password does not match.']);
             }
+        }
+
+        // Unggah dan simpan foto profil
+        if ($request->hasFile('profile_photo_path')) {
+            // Hapus foto lama jika ada
+            if ($user->profile_photo_path && file_exists(public_path('storage/' . $user->profile_photo_path))) {
+                unlink(public_path('storage/' . $user->profile_photo_path));
+            }
+
+            // Simpan foto baru
+            $filePath = $request->file('profile_photo_path')->store('profile_photos_path', 'public');
+            $user->profile_photo_path = $filePath;
         }
 
         $user->save();
