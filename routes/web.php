@@ -36,18 +36,18 @@ Route::post('daftar_pemeriksaan/store', [PasienController::class, 'store'])->nam
 
 Route::get('/hasil_pemeriksaan/{pasienId}', [HasilPemeriksaanController::class, 'index'])->name('hasil_pemeriksaan.index');
 Route::post('/hasil_pemeriksaan/{pasienId}', [HasilPemeriksaanController::class, 'store'])->name('hasil_pemeriksaan.store');
+Route::get('/hasil-pemeriksaan/{pasienId}/print', [HasilPemeriksaanController::class, 'print'])->name('hasil_pemeriksaan.print');
 
 
 
 Route::get('/pemeriksaan', function () {
     return view('pemeriksaan');
 })->name('pemeriksaan');
-Route::get('/riwayat_pemeriksaan', function () {
-    return view('riwayat_pemeriksaan');
-})->name('riwayat_pemeriksaan');
-Route::get('/pembayaran', function () {
-    return view('pembayaran');
-})->name('pembayaran');
+
+Route::get('/riwayat_pemeriksaan', [PasienController::class, 'updateStatus'])->name('updateStatus');
+Route::get('/updateStatus', [PasienController::class, 'showRiwayatPemeriksaan'])->name('riwayat_pemeriksaan');
+Route::get('/pengambilan_sampel', [PasienController::class, 'showPengambilanSampel'])->name('pengambilan_sampel');
+Route::get('/pembayaran', [PasienController::class, 'showPembayaran'])->name('pembayaran');
 
 
 
@@ -65,11 +65,6 @@ Route::post('/stok_reagen/store', [StokController::class, 'store'])->name('stok_
 Route::get('/reagen_masuk', [StokController::class, 'recapMasuk'])->name('reagen_masuk');
 Route::get('/reagen_keluar', [StokController::class, 'recapKeluar'])->name('reagen_keluar');
 
-
-// ini route ga jelas belum dikerjakan
-Route::get('/pengambilan_sampel', function () {
-    return view('pengambilan_sampel');
-})->name('pengambilan_sampel');
 
 Route::get('/hematologi', [PasienController::class, 'showByGroup'])->name('hematologi')->defaults('group', 'Hematologi');
 Route::get('/kimia_darah', [PasienController::class, 'showByGroup'])->name('kimia_darah')->defaults('group', 'Kimia Darah');

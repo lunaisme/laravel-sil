@@ -76,4 +76,25 @@ class PasienController extends Controller
         $pasiens = Pasien::where('group_test', $group)->get();
         return view('daftar_pemeriksaan.group', compact('pasiens', 'group'));
     }
+    public function showRiwayatPemeriksaan()
+    {
+        $pasiens = Pasien::whereIn('status_pemeriksaan', ['Validasi', 'Selesai'])->orderBy('status_pemeriksaan', 'desc')->get();
+        return view('riwayat_pemeriksaan', compact('pasiens'));
+    }
+
+    public function showPembayaran()
+    {
+        $pasiens = Pasien::where('status_pemeriksaan', 'Selesai')->paginate(request('entries', 10));
+        return view('pembayaran', compact('pasiens'));
+    }
+    public function showPengambilanSampel()
+    {
+        $pasiens = Pasien::where('status_pemeriksaan', 'Belum')->paginate(request('entries', 10));
+        return view('pengambilan_sampel', compact('pasiens'));
+    }
+    public function updateStatus(Pasien $pasien)
+    {
+        $pasien->update(['status_pemeriksaan' => 'Selesai']);
+        return redirect()->route('riwayat_pemeriksaan')->with('success', 'Status pemeriksaan berhasil diperbarui.');
+    }
 }

@@ -12,18 +12,21 @@ class Pasien extends Model
     protected $table = 'pasiens';
 
     protected $fillable = [
-        'kode',
-        'jenis_kelamin',
-        'tgl_daftar',
-        'jenis_pemeriksaan',
-        'group_test',
-        'jaminan',
-        'dokter',
         'no_rm',
         'nama_pasien',
-        'tanggal_pemeriksaan',
+        'alamat',
+        'status_pasien',
+        'umur',
+        'tgl_lahir',
+        'jenis_kelamin',
+        'jaminan',
+        'no_jaminan',
+        'dokter',
+        'group_test',
+        'jenis_pemeriksaan',
+        'tgl_pemeriksaan',
         'pembayaran',
-        'status_pemeriksaan'
+        'status_pemeriksaan',
     ];
     public function hasilPemeriksaan()
     {

@@ -44,17 +44,11 @@
                                 <td>{{ $pasien->jaminan }}</td>
                                 <td>{{ $pasien->dokter }}</td>
                                 <td>{{ $pasien->no_rm }}</td>
-                                <td>{{ $pasien->tanggal_pemeriksaan }}</td>
+                                <td>{{ $pasien->tgl_pemeriksaan }}</td>
                                 <td>{{ $pasien->pembayaran }}</td>
                                 <td>{{ $pasien->status_pemeriksaan }}</td>
                                 <td>
-                                    <a href="{{ route('daftar_pemeriksaan.edit', $pasien->id) }}" class="btn btn-info btn-sm">Detail</a>
-                                    <a href="{{ route('hasil_pemeriksaan.index', $pasien->id) }}" class="btn btn-warning btn-sm">Hasil</a>
-                                    <form action="{{ route('daftar_pemeriksaan.destroy', $pasien->id) }}" method="POST" style="display:inline;">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
-                                    </form>
+                                    <a href="{{ route('hasil_pemeriksaan.index', $pasien->id) }}" class="btn btn-warning btn-sm">Input Hasil</a>
                                 </td>
                             </tr>
                         @endforeach

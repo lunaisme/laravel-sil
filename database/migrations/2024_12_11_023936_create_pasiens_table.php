@@ -19,15 +19,19 @@ class CreatePasiensTable extends Migration
             $table->string('kode')->unique();
             $table->string('no_rm');
             $table->string('nama_pasien');
+            $table->string('alamat');
+            $table->string('status_pasien');
+            $table->integer('umur');
+            $table->date('tgl_lahir');
             $table->string('jenis_kelamin');
-            $table->date('tgl_daftar');
-            $table->string('jenis_pemeriksaan');
-            $table->string('group_test');
-            $table->string('status_pemeriksaan');
-            $table->string('dokter');
             $table->string('jaminan');
-            $table->date('tanggal_pemeriksaan');
+            $table->string('no_jaminan');
+            $table->string('dokter');
+            $table->string('group_test');
+            $table->string('jenis_pemeriksaan');
+            $table->date('tgl_pemeriksaan');
             $table->string('pembayaran');
+            $table->string('status_pemeriksaan');
             $table->timestamps();
         });
     }

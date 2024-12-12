@@ -1,35 +1,5 @@
 @extends('layouts.admin')
 
-@php
-
-
-$pemeriksaans = collect([
-    (object)[
-        'no' => 1,
-        'tgl' => '2023-01-01',
-        'no_lab' => 'LAB001',
-        'grup_tes' => 'Darah',
-        'nama_pasien' => 'John Doe',
-        'dokter' => 'Dr. Smith',
-        'status' => 'Terima',
-        'edta' => 'Yes',
-        'citrus' => 'No',
-        'lainnya' => 'N/A'
-    ],
-    (object)[
-        'no' => 2,
-        'tgl' => '2023-01-02',
-        'no_lab' => 'LAB002',
-        'grup_tes' => 'Urine',
-        'nama_pasien' => 'Jane Doe',
-        'dokter' => 'Dr. Brown',
-        'status' => 'Tolak',
-        'edta' => 'No',
-        'citrus' => 'Yes',
-        'lainnya' => 'N/A'
-    ]
-]);
-@endphp
 
 @section('main-content')
     <!-- Page Heading -->
@@ -63,23 +33,23 @@ $pemeriksaans = collect([
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($pemeriksaans as $pemeriksaan)
+                        @foreach($pasiens as $pemeriksaan)
                             <tr>
-                                <td>{{ $pemeriksaan->no }}</td>
-                                <td>{{ $pemeriksaan->tgl }}</td>
+                                <td>{{ $pemeriksaan->kode }}</td>
+                                <td>{{ $pemeriksaan->tgl_daftar }}</td>
                                 <td>{{ $pemeriksaan->no_lab }}</td>
-                                <td>{{ $pemeriksaan->grup_tes }}</td>
+                                <td>{{ $pemeriksaan->group_test }}</td>
                                 <td>{{ $pemeriksaan->nama_pasien }}</td>
                                 <td>{{ $pemeriksaan->dokter }}</td>                            
-                                <td>{{ $pemeriksaan->edta }}</td>
-                                <td>{{ $pemeriksaan->citrus }}</td>
-                                <td>{{ $pemeriksaan->lainnya }}</td>
-                                <td>{{ $pemeriksaan->lainnya }}</td>
-                                <td>{{ $pemeriksaan->lainnya }}</td>
+                                <td>{{ $pemeriksaan->jenis_pemeriksaan == 'EDTA' ? '✔' : '' }}</td>
+                                <td>{{ $pemeriksaan->jenis_pemeriksaan == 'Citrus' ? '✔' : '' }}</td>
+                                <td>{{ $pemeriksaan->jenis_pemeriksaan == 'Serum' ? '✔' : '' }}</td>
+                                <td>{{ $pemeriksaan->jenis_pemeriksaan == 'Urine' ? '✔' : '' }}</td>
+                                <td>{{ $pemeriksaan->jenis_pemeriksaan == 'Lainnya' ? '✔' : '' }}</td>
                                 <td>
-                                    <span class="badge {{ $pemeriksaan->status == 'Terima' ? 'badge-success' : 'badge-danger' }}">
-                                        {{ $pemeriksaan->status }}
-                                    </span>
+                                  <a href="{{ route('daftar_pemeriksaan.edit', $pemeriksaan->id) }}" class="btn btn-secondary">
+                                            {{ $pemeriksaan->status_pemeriksaan }}
+                                        </a>
                                 </td>
                             </tr>
                         @endforeach

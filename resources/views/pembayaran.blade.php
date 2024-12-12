@@ -1,26 +1,4 @@
 @extends('layouts.admin')
-@php
-$pemeriksaans = collect([
-    (object)[
-        'id' => 1,
-        'kode' => 'P001',
-        'nama' => 'John Doe',
-        'tgl_daftar' => '2023-01-01',
-        'total_harga' => 100000,
-        'jaminan' => 'BPJS',
-        'status' => 'Lunas'
-    ],
-    (object)[
-        'id' => 2,
-        'kode' => 'P002',
-        'nama' => 'Jane Doe',
-        'tgl_daftar' => '2023-01-02',
-        'total_harga' => 200000,
-        'jaminan' => 'Pribadi',
-        'status' => 'Belum Lunas'
-    ]
-]);
-@endphp
 
 @section('main-content')
     <!-- Page Heading -->
@@ -48,17 +26,17 @@ $pemeriksaans = collect([
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($pemeriksaans as $pemeriksaan)
+                        @foreach($pasiens as $pemeriksaan)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $pemeriksaan->kode }}</td>
-                                <td>{{ $pemeriksaan->nama }}</td>
-                                <td>{{ $pemeriksaan->tgl_daftar }}</td>
+                                <td>{{ $pemeriksaan->nama_pasien }}</td>
+                                <td>{{ $pemeriksaan->tgl_lahir }}</td>
                                 <td>{{ number_format($pemeriksaan->total_harga, 0, ',', '.') }}</td>
                                 <td>{{ $pemeriksaan->jaminan }}</td>
                                 <td>
-                                    <span class="badge {{ $pemeriksaan->status == 'Lunas' ? 'badge-success' : 'badge-danger' }}">
-                                        {{ $pemeriksaan->status }}
+                                    <span class="badge {{ $pemeriksaan->pembayaran == 'Lunas' ? 'badge-success' : 'badge-danger' }}">
+                                        {{ $pemeriksaan->pembayaran }}
                                     </span>
                                 </td>
                                 <td>

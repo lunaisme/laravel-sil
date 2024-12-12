@@ -33,4 +33,9 @@ class HasilPemeriksaanController extends Controller
 
         return redirect()->route('hasil_pemeriksaan.index', $pasienId)->with('success', 'Hasil pemeriksaan berhasil disimpan.');
     }
+    public function print($pasienId)
+    {
+        $pasien = Pasien::with('hasilPemeriksaan')->findOrFail($pasienId);
+        return view('hasil_pemeriksaan.print', compact('pasien'));
+    }
 }

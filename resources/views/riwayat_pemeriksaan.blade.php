@@ -1,32 +1,26 @@
 @extends('layouts.admin')
 
-@php
-$pemeriksaans = collect([
-    (object)[
-        'no' => 1,
-        'tgl' => '2023-01-01',
-        'no_lab' => 'LAB001',
-        'grup_tes' => 'Darah',
-        'nama_pasien' => 'John Doe',
-        'dokter' => 'Dr. Smith',
-        'status' => 'Selesai'
-    ],
-    (object)[
-        'no' => 2,
-        'tgl' => '2023-01-02',
-        'no_lab' => 'LAB002',
-        'grup_tes' => 'Urine',
-        'nama_pasien' => 'Jane Doe',
-        'dokter' => 'Dr. Brown',
-        'status' => 'Belum Validasi'
-    ]
-]);
-@endphp
-
 @section('main-content')
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800">{{ __('Riwayat Pemeriksaan') }}</h1>
+    @if (session('success'))
+        <div class="alert alert-success border-left-success alert-dismissible fade show" role="alert">
+            {{ session('success') }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    @endif
 
+    @if ($errors->any())
+        <div class="alert alert-danger border-left-danger" role="alert">
+            <ul class="pl-4 my-2">
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
     <div class="row justify-content-center px-3">
 
     <div class="col-12 card shadow mb-4">
@@ -49,23 +43,23 @@ $pemeriksaans = collect([
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($pemeriksaans as $pemeriksaan)
+                        @foreach($pasiens as $pasien)
                             <tr>
-                                <td>{{ $pemeriksaan->no }}</td>
-                                <td>{{ $pemeriksaan->tgl }}</td>
-                                <td>{{ $pemeriksaan->no_lab }}</td>
-                                <td>{{ $pemeriksaan->grup_tes }}</td>
-                                <td>{{ $pemeriksaan->nama_pasien }}</td>
-                                <td>{{ $pemeriksaan->dokter }}</td>
+                                <td>{{ $pasien->kode }}</td>
+                                <td>{{ $pasien->tgl_pemeriksaan }}</td>
+                                <td>{{ $pasien->no_lab }}</td>
+                                <td>{{ $pasien->group_test }}</td>
+                                <td>{{ $pasien->nama_pasien }}</td>
+                                <td>{{ $pasien->dokter }}</td>
                                 <td>
-                                    <span class="badge {{ $pemeriksaan->status == 'Selesai' ? 'badge-success' : 'badge-danger' }}">
-                                        {{ $pemeriksaan->status }}
+                                    <span class="badge {{ $pasien->status_pemeriksaan == 'Validasi' ? 'badge-danger' : 'badge-success' }}">
+                                        {{ $pasien->status_pemeriksaan }}
                                     </span>
                                 </td>
                                 <td>
                                     <a href="" class="btn btn-info btn-sm" ><i class="fas fa-eye"></i></a>
-                                    <a href="" class="btn btn-success btn-sm"><i class="fas fa-check"></i></a>
-                                    <a href="" class="btn btn-primary btn-sm"><i class="fas fa-print"></i></a>
+                                    <a href="{{ route('updateStatus', $pasien->id) }}" class="btn btn-success btn-sm"><i class="fas fa-check"></i></a>
+                                    <a href="{{ route('hasil_pemeriksaan.print', $pasien->id) }}" class="fas fa-print" target="_blank"></a>
                                     <a href="" class="btn btn-warning btn-sm"><i class="fas fa-paper-plane"></i></a>
                                 </td>
                             </tr>

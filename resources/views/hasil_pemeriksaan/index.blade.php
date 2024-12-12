@@ -1,18 +1,38 @@
 @extends('layouts.admin')
 
 @section('main-content')
-<h1 class="h3 mb-4 text-gray-800">Hasil Pemeriksaan: {{ $pasien->id }}</h1>
+<h1 class="h3 mb-4 text-gray-800">Input Hasil Pemeriksaan: {{ $pasien->id }}</h1>
 
 <div class="card shadow mb-4">
     <div class="card-header">
-        <h6 class="m-0 font-weight-bold text-primary">Input Hasil Pemeriksaan</h6>
+        <h6 class="m-0 font-weight-bold text-primary">Detail Pasien</h6>
     </div>
     <div class="card-body">
-        <div class="mb-4">
-            <h5>Data Pasien</h5>
-            <p><strong>Nama:</strong> {{ $pasien->nama_pasien }}</p>
-            <p><strong>Jenis Kelamin:</strong> {{ $pasien->jenis_kelamin }}</p>
-            <p><strong>Alamat:</strong> {{ $pasien->jenis_pemeriksaan }}</p>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card shadow mb-4">
+                    <div class="card-header">
+                        <h6 class="m-0 font-weight-bold text-primary">Informasi Pasien</h6>
+                    </div>
+                    <div class="card-body">
+                        <p><strong>No RM:</strong> {{ $pasien->no_rm }}</p>
+                        <p><strong>Nama Pasien:</strong> {{ $pasien->nama_pasien }}</p>
+                        <p><strong>Tanggal Lahir:</strong> {{ $pasien->tgl_lahir }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card shadow mb-4">
+                    <div class="card-header">
+                        <h6 class="m-0 font-weight-bold text-primary">Informasi Pemeriksaan</h6>
+                    </div>
+                    <div class="card-body">
+                        <p><strong>No Lab:</strong> {{ $pasien->no_lab }}</p>
+                        <p><strong>Tanggal Pemeriksaan:</strong> {{ $pasien->tgl_pemeriksaan }}</p>
+                        <p><strong>Dokter:</strong> {{ $pasien->dokter }}</p>
+                    </div>
+                </div>
+            </div>
         </div>
         <form action="{{ route('hasil_pemeriksaan.store', $pasien->id) }}" method="POST">
             @csrf
