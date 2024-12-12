@@ -1,5 +1,6 @@
 <?php
 
+
 namespace App\Http\Controllers;
 
 use App\Models\Pasien;
@@ -13,11 +14,6 @@ class PasienController extends Controller
         return view('daftar_pemeriksaan.index', compact('pasiens'));
     }
 
-    public function show($id)
-    {
-        $pasien = Pasien::findOrFail($id);
-        return view('daftar_pemeriksaan.show', compact('pasien'));
-    }
     public function create()
     {
         return view('daftar_pemeriksaan.create');
@@ -25,49 +21,59 @@ class PasienController extends Controller
 
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
+        $request->validate([
             'kode' => 'required',
-            'nama' => 'required',
+            'nama_pasien' => 'required',
             'jenis_kelamin' => 'required',
             'tgl_daftar' => 'required|date',
+            'group_test' => 'required',
             'jenis_pemeriksaan' => 'required',
             'jaminan' => 'required',
             'dokter' => 'required',
+            'no_rm' => 'required',
+            'tanggal_pemeriksaan' => 'required|date',
+            'pembayaran' => 'required',
+            'status_pemeriksaan' => 'required',
         ]);
 
-        Pasien::create($validatedData);
-
+        Pasien::create($request->all());
         return redirect()->route('daftar_pemeriksaan.index')->with('success', 'Data pemeriksaan berhasil ditambahkan.');
     }
-    public function edit($id)
+
+    public function edit(Pasien $daftar_pemeriksaan)
     {
-        $pasien = Pasien::findOrFail($id);
-        return view('daftar_pemeriksaan.edit', compact('pasien'));
+        return view('daftar_pemeriksaan.edit', compact('daftar_pemeriksaan'));
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, Pasien $daftar_pemeriksaan)
     {
-        $validatedData = $request->validate([
+        $request->validate([
             'kode' => 'required',
-            'nama' => 'required',
+            'nama_pasien' => 'required',
             'jenis_kelamin' => 'required',
             'tgl_daftar' => 'required|date',
             'jenis_pemeriksaan' => 'required',
             'jaminan' => 'required',
             'dokter' => 'required',
+            'no_rm' => 'required',
+            'tanggal_pemeriksaan' => 'required|date',
+            'pembayaran' => 'required',
+            'status_pemeriksaan' => 'required',
+            'group_test' => 'required',
         ]);
 
-        $pasien = Pasien::findOrFail($id);
-        $pasien->update($validatedData);
-
+        $daftar_pemeriksaan->update($request->all());
         return redirect()->route('daftar_pemeriksaan.index')->with('success', 'Data pemeriksaan berhasil diperbarui.');
     }
 
-    public function destroy($id)
+    public function destroy(Pasien $pasien)
     {
-        $pasien = Pasien::findOrFail($id);
         $pasien->delete();
-
         return redirect()->route('daftar_pemeriksaan.index')->with('success', 'Data pemeriksaan berhasil dihapus.');
+    }
+    public function showByGroup($group)
+    {
+        $pasiens = Pasien::where('group_test', $group)->get();
+        return view('daftar_pemeriksaan.group', compact('pasiens', 'group'));
     }
 }

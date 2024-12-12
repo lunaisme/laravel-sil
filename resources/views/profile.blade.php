@@ -30,10 +30,10 @@
             <div class="card shadow mb-4">
                 <div class="card-profile-image mt-4">
                     @if (Auth::user()->profile_photo_path)
-                        <img src="{{ asset('storage/' . Auth::user()->profile_photo_path) }}" class="rounded-circle" style="height: 180px; width: 180px;" alt="Profile Photo">
-                    @else
-                        <figure class="rounded-circle avatar avatar font-weight-bold" style="font-size: 60px; height: 180px; width: 180px;" data-initial="{{ Auth::user()->name[0] }}"></figure>
-                    @endif
+                    <img src="{{ asset('storage/' . Auth::user()->profile_photo_path) }}" class="rounded-circle" style="height: 180px; width: 180px;" alt="Profile Photo">
+                @else
+                    <figure class="rounded-circle avatar avatar font-weight-bold" style="font-size: 60px; height: 180px; width: 180px;" data-initial="{{ Auth::user()->name[0] }}"></figure>
+                @endif
                 </div>
                 
                 <div class="card-body">
@@ -81,7 +81,7 @@
 
                 <div class="card-body">
 
-                    <form method="POST" action="{{ route('profile.update') }}" autocomplete="off">
+                    <form method="POST" action="{{ route('profile.update') }}" autocomplete="off" enctype="multipart/form-data">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                         <input type="hidden" name="_method" value="PUT">

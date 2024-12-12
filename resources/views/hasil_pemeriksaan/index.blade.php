@@ -1,13 +1,19 @@
 @extends('layouts.admin')
 
 @section('main-content')
-<h1 class="h3 mb-4 text-gray-800">Hasil Pemeriksaan: {{ $pasien->nama }}</h1>
+<h1 class="h3 mb-4 text-gray-800">Hasil Pemeriksaan: {{ $pasien->id }}</h1>
 
 <div class="card shadow mb-4">
     <div class="card-header">
         <h6 class="m-0 font-weight-bold text-primary">Input Hasil Pemeriksaan</h6>
     </div>
     <div class="card-body">
+        <div class="mb-4">
+            <h5>Data Pasien</h5>
+            <p><strong>Nama:</strong> {{ $pasien->nama_pasien }}</p>
+            <p><strong>Jenis Kelamin:</strong> {{ $pasien->jenis_kelamin }}</p>
+            <p><strong>Alamat:</strong> {{ $pasien->jenis_pemeriksaan }}</p>
+        </div>
         <form action="{{ route('hasil_pemeriksaan.store', $pasien->id) }}" method="POST">
             @csrf
             <div id="hasil-pemeriksaan-form">

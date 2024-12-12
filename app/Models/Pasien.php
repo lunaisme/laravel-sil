@@ -16,6 +16,7 @@ class Pasien extends Model
         'jenis_kelamin',
         'tgl_daftar',
         'jenis_pemeriksaan',
+        'group_test',
         'jaminan',
         'dokter',
         'no_rm',

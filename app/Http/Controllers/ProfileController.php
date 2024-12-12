@@ -33,7 +33,7 @@ class ProfileController extends Controller
             'current_password' => 'nullable|required_with:new_password',
             'new_password' => 'nullable|min:8|max:12|required_with:current_password',
             'password_confirmation' => 'nullable|min:8|max:12|required_with:new_password|same:new_password',
-            'profile_photo_path' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Validasi foto profil
+            'profile_photo_path' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
         $user = User::findOrFail(Auth::user()->id);
@@ -53,14 +53,14 @@ class ProfileController extends Controller
         }
 
         // Unggah dan simpan foto profil
-        if ($request->hasFile('profile_photo_path')) {
+        if ($request->hasFile('photo')) {
             // Hapus foto lama jika ada
             if ($user->profile_photo_path && file_exists(public_path('storage/' . $user->profile_photo_path))) {
                 unlink(public_path('storage/' . $user->profile_photo_path));
             }
 
             // Simpan foto baru
-            $filePath = $request->file('profile_photo_path')->store('profile_photos_path', 'public');
+            $filePath = $request->file('photo')->store('profile_photos', 'public');
             $user->profile_photo_path = $filePath;
         }
 

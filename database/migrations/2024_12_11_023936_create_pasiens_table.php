@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Seeder;
 
 class CreatePasiensTable extends Migration
 {
@@ -21,6 +22,7 @@ class CreatePasiensTable extends Migration
             $table->string('jenis_kelamin');
             $table->date('tgl_daftar');
             $table->string('jenis_pemeriksaan');
+            $table->string('group_test');
             $table->string('status_pemeriksaan');
             $table->string('dokter');
             $table->string('jaminan');

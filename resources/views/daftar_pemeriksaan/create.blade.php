@@ -29,9 +29,26 @@
                             <input type="date" class="form-control" id="tgl_daftar" name="tgl_daftar" required>
                         </div>
                         <div class="form-group">
-                            <label for="jenis_pemeriksaan">Jenis Pemeriksaan</label>
-                            <input type="text" class="form-control" id="jenis_pemeriksaan" name="jenis_pemeriksaan" required>
+                            <label for="group_test">Group Test</label>
+                            <select class="form-control" id="group_test" name="group_test" required>
+                                <option value="Hematologi">Hematologi</option>
+                                <option value="Kimia Darah">Kimia Darah</option>
+                                <option value="Urinalisis">Urinalisis</option>
+                                <option value="Imuneserologi">Imuneserologi</option>
+                                <option value="Mikrobiologi">Mikrobiologi</option>
+                                <option value="Lain-lain">Lain-lain</option>
+                            </select>
                         </div>
+                        <div class="form-group">
+                                    <label for="jenis_pemeriksaan">Jenis Pemeriksaan</label>
+                                    <select class="form-control" id="jenis_pemeriksaan" name="jenis_pemeriksaan" required>
+                                        <option value="EDTA" data-group="Hematologi">EDTA</option>
+                                        <option value="Serum" data-group="Kimia Darah">Serum</option>
+                                        <option value="Citrat" data-group="Kimia Darah">Citrat</option>
+                                        <option value="Urine" data-group="Urinalisis">Urine</option>
+                                        <option value="Lainnya" data-group="Lain-lain">Lainnya</option>
+                                    </select>
+                                </div>
                         <div class="form-group">
                             <label for="jaminan">Jaminan</label>
                             <input type="text" class="form-control" id="jaminan" name="jaminan" required>
@@ -69,4 +86,21 @@
         </div>
     </div>
 </div>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const groupTestSelect = document.getElementById('group_test');
+        const jenisPemeriksaanSelect = document.getElementById('jenis_pemeriksaan');
+
+        groupTestSelect.addEventListener('change', function () {
+            const selectedGroup = this.value;
+            Array.from(jenisPemeriksaanSelect.options).forEach(option => {
+                option.style.display = option.getAttribute('data-group') === selectedGroup ? 'block' : 'none';
+            });
+            jenisPemeriksaanSelect.value = '';
+        });
+
+        // Trigger change event to filter options on page load
+        groupTestSelect.dispatchEvent(new Event('change'));
+    });
+</script>
 @endsection

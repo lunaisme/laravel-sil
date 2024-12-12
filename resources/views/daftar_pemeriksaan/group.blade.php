@@ -2,7 +2,7 @@
 
 @section('main-content')
 <!-- Page Heading -->
-<h1 class="h3 mb-4 text-gray-800">{{ __('Daftar Pemeriksaan') }}</h1>
+<h1 class="h3 mb-4 text-gray-800">{{ __('Daftar Pemeriksaan - ') }}{{ $group }}</h1>
 
 <div class="row justify-content-center px-3">
     <div class="col-12 card shadow mb-4">
@@ -25,6 +25,10 @@
                             <th>Jenis Pemeriksaan</th>
                             <th>Jaminan</th>
                             <th>Dokter</th>
+                            <th>No RM</th>
+                            <th>Tgl Pemeriksaan</th>
+                            <th>Pembayaran</th>
+                            <th>Status Pemeriksaan</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -39,8 +43,18 @@
                                 <td>{{ $pasien->jenis_pemeriksaan }}</td>
                                 <td>{{ $pasien->jaminan }}</td>
                                 <td>{{ $pasien->dokter }}</td>
+                                <td>{{ $pasien->no_rm }}</td>
+                                <td>{{ $pasien->tanggal_pemeriksaan }}</td>
+                                <td>{{ $pasien->pembayaran }}</td>
+                                <td>{{ $pasien->status_pemeriksaan }}</td>
                                 <td>
                                     <a href="{{ route('daftar_pemeriksaan.edit', $pasien->id) }}" class="btn btn-info btn-sm">Detail</a>
+                                    <a href="{{ route('hasil_pemeriksaan.index', $pasien->id) }}" class="btn btn-warning btn-sm">Hasil</a>
+                                    <form action="{{ route('daftar_pemeriksaan.destroy', $pasien->id) }}" method="POST" style="display:inline;">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach

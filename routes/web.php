@@ -28,16 +28,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/profile', 'ProfileController@index')->name('profile');
 Route::put('/profile', 'ProfileController@update')->name('profile.update');
 
-Route::get('/daftar_pemeriksaan', function () {
-    return view('daftar_pemeriksaan.daftar_pemeriksaan');
-})->name('daftar_pemeriksaan');
-Route::get('/detail_pemeriksaan', function () {
-    return view('daftar_pemeriksaan.detail_pemeriksaan');
-})->name('detail_pemeriksaan');
-Route::get('/daftar_pemeriksaan', [PasienController::class, 'index'])->name('daftar_pemeriksaan.index');
-Route::get('/daftar_pemeriksaan/create', [PasienController::class, 'create'])->name('daftar_pemeriksaan.create');
-Route::get('/detail_pemeriksaan/{pasien}', [PasienController::class, 'show'])->name('daftar_pemeriksaan.show');
-Route::post('/daftar_pemeriksaan/store', [PasienController::class, 'store'])->name('daftar_pemeriksaan.store');
+
+
+Route::resource('daftar_pemeriksaan', PasienController::class);
+Route::post('daftar_pemeriksaan/store', [PasienController::class, 'store'])->name('daftar_pemeriksaan.store');
 
 
 Route::get('/hasil_pemeriksaan/{pasienId}', [HasilPemeriksaanController::class, 'index'])->name('hasil_pemeriksaan.index');
@@ -77,32 +71,12 @@ Route::get('/pengambilan_sampel', function () {
     return view('pengambilan_sampel');
 })->name('pengambilan_sampel');
 
-Route::get('/hematologi', function () {
-    return view('hematologi');
-})->name('hematologi');
-
-Route::get('/kimia_darah', function () {
-    return view('kimia_darah');
-})->name('kimia_darah');
-
-Route::get('/urinalisis', function () {
-    return view('urinalisis');
-})->name('urinalisis');
-
-Route::get('/imunoserologi', function () {
-    return view('imunoserologi');
-})->name('imunoserologi');
-
-Route::get('/mikrobiologi', function () {
-    return view('mikrobiologi');
-})->name('mikrobiologi');
-
-Route::get('/lain_lain', function () {
-    return view('lain_lain');
-})->name('lain_lain');
-Route::get('/lain_lain', function () {
-    return view('lain_lain');
-})->name('lain_lain');
+Route::get('/hematologi', [PasienController::class, 'showByGroup'])->name('hematologi')->defaults('group', 'Hematologi');
+Route::get('/kimia_darah', [PasienController::class, 'showByGroup'])->name('kimia_darah')->defaults('group', 'Kimia Darah');
+Route::get('/urinalisis', [PasienController::class, 'showByGroup'])->name('urinalisis')->defaults('group', 'Urinalisis');
+Route::get('/imunoserologi', [PasienController::class, 'showByGroup'])->name('imunoserologi')->defaults('group', 'Imunoserologi');
+Route::get('/mikrobiologi', [PasienController::class, 'showByGroup'])->name('mikrobiologi')->defaults('group', 'Mikrobiologi');
+Route::get('/lain_lain', [PasienController::class, 'showByGroup'])->name('lain_lain')->defaults('group', 'Lain-lain');
 
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\ExaminationController;
