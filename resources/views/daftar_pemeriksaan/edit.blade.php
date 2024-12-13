@@ -7,6 +7,18 @@
     <div class="col-12 card shadow mb-4">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">Form Edit Pemeriksaan</h6>
+            @if ($users->isEmpty())
+            <p class="text-muted">Tidak ada petugas yang terdaftar.</p>
+        @else
+            <ul class="list-group">
+                @foreach ($users as $user)
+                    <li class="list-group-item d-flex justify-content-between align-items-center mb-2">
+                        {{ $user->name }}
+                        <span class="badge badge-primary badge-pill">{{ $user->jabatan }}</span>
+                    </li>
+                @endforeach
+            </ul>
+        @endif
         </div>
         <div class="card-body">
             <form action="{{ route('daftar_pemeriksaan.update', $daftar_pemeriksaan->id) }}" method="POST">

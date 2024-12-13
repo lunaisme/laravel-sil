@@ -42,43 +42,24 @@ class StokController extends Controller
     // Menyimpan transaksi (masuk/keluar)
     public function store(Request $request)
     {
-        // Validasi input
-        $request->validate([
-            'kode' => 'nullable|string|max:50|unique:reagens,kode',
-            'nama' => 'nullable|string|max:100',
-            'stok_awal' => 'nullable|integer|min:0',
-            'reagen_id' => 'nullable|exists:reagens,id',
-            'tipe' => 'required|in:masuk,keluar',
-            'jumlah' => 'required|integer|min:1',
-            'keterangan' => 'nullable|string',
-        ]);
-
-        // Tambah data reagen baru jika data kode, nama, dan stok_awal diisi
-        if ($request->filled(['kode', 'nama', 'stok_awal'])) {
-            $reagen = Reagen::create([
-                'kode' => $request->kode,
-                'nama' => $request->nama,
-                'stok_awal' => $request->stok_awal,
-            ]);
+        if ($request->has('kode') && $request->has('nama') && $request->has('stok_awal')) {
+            // Handle new reagent creation
+            $reagen = new Reagen();
+            $reagen->kode = $request->kode;
+            $reagen->nama = $request->nama;
+            $reagen->stok_awal = $request->stok_awal;
+            $reagen->save();
         } else {
-            // Jika tidak menambah reagen baru, gunakan reagen_id yang dipilih
-            $reagen = Reagen::find($request->reagen_id);
+            // Handle reagent transaction
+            $transaction = new Transaksi();
+            $transaction->reagen_id = $request->reagen_id;
+            $transaction->tipe = $request->tipe;
+            $transaction->jumlah = $request->jumlah;
+            $transaction->keterangan = $request->keterangan;
+            $transaction->save();
         }
 
-        // Cek jika reagen tidak ditemukan (fallback jika tidak dipilih atau ditambah)
-        if (!$reagen) {
-            return back()->withErrors('Pilih atau tambahkan reagen baru.');
-        }
-
-        // Simpan transaksi
-        Transaksi::create([
-            'reagen_id' => $reagen->id,
-            'tipe' => $request->tipe,
-            'jumlah' => $request->jumlah,
-            'keterangan' => $request->keterangan,
-        ]);
-
-        return redirect()->route('stok_reagen')->with('success', 'Data berhasil disimpan.');
+        return redirect()->back()->with('success', 'Data berhasil disimpan');
     }
 
     public function recapMasuk()

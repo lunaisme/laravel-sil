@@ -46,6 +46,7 @@
                             <label for="stok_awal">Stok Awal</label>
                             <input type="number" class="form-control" id="stok_awal" name="stok_awal" placeholder="Opsional jika memilih reagen yang ada">
                         </div>
+                        <button type="submit" class="btn btn-primary mt-3">Simpan Reagen</button>
                     </form>
                 </div>
             </div>
@@ -93,7 +94,7 @@
                             <label for="keterangan">Keterangan</label>
                             <textarea name="keterangan" id="keterangan" class="form-control" rows="3"></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary mt-3">Simpan</button>
+                        <button type="submit" class="btn btn-primary mt-3">Simpan Transaksi</button>
                     </form>
                 </div>
             </div>
