@@ -73,7 +73,7 @@ class RegisterController extends Controller
             'nik' => $data['nik'],
             'nip' => $data['nip'],
             'jabatan' => $data['jabatan'],
-            'password' => $data['password'],
+            'password' => Hash::make($data['password']), // Hash password
         ]);
     }
 }

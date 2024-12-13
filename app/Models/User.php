@@ -22,6 +22,7 @@ class User extends Authenticatable
         'nik',
         'nip',
         'jabatan',
+        'password',
         'profile_photo_path',
     ];
 

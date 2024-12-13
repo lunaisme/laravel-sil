@@ -23,6 +23,8 @@ class Pasien extends Model
         'no_jaminan',
         'dokter',
         'group_test',
+        'tgl_pendaftaran',
+        'no_lab',
         'jenis_pemeriksaan',
         'tgl_pemeriksaan',
         'pembayaran',

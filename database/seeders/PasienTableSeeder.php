@@ -137,29 +137,6 @@ class PasienTableSeeder extends Seeder
             // Add more entries here...
         ];
 
-        // Add more entries to make it 20
-        for ($i = 7; $i <= 20; $i++) {
-            $pasiens[] = [
-                'kode' => 'P00' . $i,
-                'no_rm' => 'RM00' . $i,
-                'nama_pasien' => 'Patient ' . $i,
-                'alamat' => $i . ' Example St',
-                'status_pasien' => ($i % 2 == 0) ? 'Rawat Inap' : 'Rawat Jalan',
-                'umur' => rand(20, 60),
-                'tgl_lahir' => Carbon::now()->subYears(rand(20, 60))->format('Y-m-d'),
-                'jenis_kelamin' => ($i % 2 == 0) ? 'Laki-laki' : 'Perempuan',
-                'jaminan' => ($i % 2 == 0) ? 'Asuransi' : 'BPJS',
-                'no_jaminan' => ($i % 2 == 0) ? 'ASUR00' . $i : 'BPJS00' . $i,
-                'dokter' => 'Dr. ' . chr(64 + $i),
-                'group_test' => 'Test Group ' . $i,
-                'jenis_pemeriksaan' => 'Pemeriksaan ' . $i,
-                'tgl_pemeriksaan' => '2024-12-12',
-                'pembayaran' => ($i % 2 == 0) ? 'Belum' : 'Lunas',
-                'status_pemeriksaan' => ['Belum', 'Diterima', 'Validasi', 'Selesai'][rand(0, 3)],
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
-            ];
-        }
 
         DB::table('pasiens')->insert($pasiens);
     }
