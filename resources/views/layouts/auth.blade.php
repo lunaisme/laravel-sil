@@ -31,7 +31,7 @@
 </body>
 <style>
     body{
-        background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6t-rCUiijhrTAlM6ReCE9Rh4wqy3PqY_R5MQJ3X1uKHpQUgzOS_PeqWHL6D1Qyu76BUQ&usqp=CAU') no-repeat center center fixed;
+        background: url('https://img.freepik.com/premium-photo/modern-medical-laboratory-light-background_288990-2397.jpg?w=826') no-repeat center center fixed;
         background-size: cover;
     }
 </style>

@@ -8,10 +8,16 @@ use Illuminate\Http\Request;
 
 class PasienController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $pasiens = Pasien::all();
-        return view('daftar_pemeriksaan.index', compact('pasiens'));
+        $query = $request->input('query');
+        if ($query) {
+            $pasiens = Pasien::where('nama_pasien', 'LIKE', "%{$query}%")
+                ->get();
+        } else {
+            $pasiens = Pasien::all();
+        }
+        return view('daftar_pemeriksaan.index', compact('pasiens', 'query'));
     }
 
     public function create()
@@ -21,7 +27,7 @@ class PasienController extends Controller
 
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
+        $request->validate([
             'kode' => 'required',
             'nama_pasien' => 'required',
             'jenis_kelamin' => 'required',
@@ -31,17 +37,15 @@ class PasienController extends Controller
             'jaminan' => 'required',
             'dokter' => 'required',
             'no_rm' => 'required',
+            'tanggal_pemeriksaan' => 'required|date',
             'pembayaran' => 'required',
             'status_pemeriksaan' => 'required',
         ]);
 
-        try {
-            Pasien::create($validatedData);
-            return redirect()->route('daftar_pemeriksaan.index')->with('success', 'Data pemeriksaan berhasil ditambahkan.');
-        } catch (\Exception $e) {
-            return back()->withErrors(['error' => $e->getMessage()]);
-        }
+        $pasien = Pasien::create($request->all());
+        return redirect()->route('daftar_pemeriksaan.index')->with('success', 'Data pemeriksaan berhasil ditambahkan.');
     }
+
     public function edit(Pasien $daftar_pemeriksaan)
     {
         return view('daftar_pemeriksaan.edit', compact('daftar_pemeriksaan'));

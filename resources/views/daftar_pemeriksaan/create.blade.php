@@ -7,15 +7,6 @@
     <div class="col-12 card shadow mb-4">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">Form Tambah Pemeriksaan</h6>
-            @if ($errors->any())
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
         </div>
         <div class="card-body">
             <form action="{{ route('daftar_pemeriksaan.store') }}" method="POST" enctype="multipart/form-data">
@@ -23,10 +14,6 @@
                 <div class="row">
                     <div class="col-md-6">
                         <h5>Data Pasien</h5>
-                        <div class="form-group">
-                            <label for="kode">Kode</label>
-                            <input type="text" class="form-control" id="kode" name="kode" required>
-                        </div>
                         <div class="form-group">
                             <label for="no_rm">No RM</label>
                             <input type="text" class="form-control" id="no_rm" name="no_rm" required>
@@ -38,10 +25,6 @@
                         <div class="form-group">
                             <label for="alamat">Alamat</label>
                             <input type="text" class="form-control" id="alamat" name="alamat" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="tgl_daftar">Tanggal Daftar</label>
-                            <input type="date" class="form-control" id="tgl_daftar" name="tgl_daftar" required>
                         </div>
                         <div class="form-group">
                             <label for="status_pasien">Status Pasien</label>
@@ -113,13 +96,13 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="status pemeriksaan">Status Pemeriksaan</label>
-                              <select class="form-control" id="status_pemeriksaan" name="status_pemeriksaan" required>
+                            <label for="status_pemeriksaan">Status Pemeriksaan</label>
+                            <select class="form-control" id="status_pemeriksaan" name="status_pemeriksaan" required>
                                 <option value="Belum">Belum</option>
                                 <option value="Diterima">Diterima</option>
                                 <option value="Validasi">Validasi</option>
                                 <option value="Selesai">Selesai</option>
-                              </select>
+                            </select>
                         </div>
                     </div>
                 </div>
