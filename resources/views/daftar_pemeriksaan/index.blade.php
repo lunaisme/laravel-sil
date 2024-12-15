@@ -37,7 +37,7 @@
                             <th>Nama</th>
                             <th>Jenis Kelamin</th>
                             <th>Tgl Daftar</th>
-                            <th>Jenis Pemeriksaan</th>
+                            <th>Group Test</th>
                             <th>Jaminan</th>
                             <th>Dokter</th>
                             <th>Aksi</th>
@@ -50,8 +50,8 @@
                                 <td>{{ $pasien->kode }}</td>
                                 <td>{{ $pasien->nama_pasien }}</td>
                                 <td>{{ $pasien->jenis_kelamin }}</td>
-                                <td>{{ $pasien->tgl_daftar }}</td>
-                                <td>{{ $pasien->jenis_pemeriksaan }}</td>
+                                <td>{{ $pasien->tgl_pemeriksaan }}</td>
+                                <td>{{ $pasien->group_test }}</td>
                                 <td>{{ $pasien->jaminan }}</td>
                                 <td>{{ $pasien->dokter }}</td>
                                 <td>

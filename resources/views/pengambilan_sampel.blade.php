@@ -36,16 +36,16 @@
                         @foreach($pasiens as $pemeriksaan)
                             <tr>
                                 <td>{{ $pemeriksaan->kode }}</td>
-                                <td>{{ $pemeriksaan->tgl_daftar }}</td>
+                                <td>{{ $pemeriksaan->tgl_pemeriksaan }}</td>
                                 <td>{{ $pemeriksaan->no_lab }}</td>
                                 <td>{{ $pemeriksaan->group_test }}</td>
                                 <td>{{ $pemeriksaan->nama_pasien }}</td>
                                 <td>{{ $pemeriksaan->dokter }}</td>                            
-                                <td>{{ $pemeriksaan->jenis_pemeriksaan == 'EDTA' ? '✔' : '' }}</td>
-                                <td>{{ $pemeriksaan->jenis_pemeriksaan == 'Citrus' ? '✔' : '' }}</td>
-                                <td>{{ $pemeriksaan->jenis_pemeriksaan == 'Serum' ? '✔' : '' }}</td>
-                                <td>{{ $pemeriksaan->jenis_pemeriksaan == 'Urine' ? '✔' : '' }}</td>
-                                <td>{{ $pemeriksaan->jenis_pemeriksaan == 'Lainnya' ? '✔' : '' }}</td>
+                                <td>{{ $pemeriksaan->jenis_sample == 'EDTA' ? '✔' : '' }}</td>
+                                <td>{{ $pemeriksaan->jenis_sample == 'Citrus' ? '✔' : '' }}</td>
+                                <td>{{ $pemeriksaan->jenis_sample == 'Serum' ? '✔' : '' }}</td>
+                                <td>{{ $pemeriksaan->jenis_sample == 'Urine' ? '✔' : '' }}</td>
+                                <td>{{ $pemeriksaan->jenis_sample == 'Lainnya' ? '✔' : '' }}</td>
                                 <td>
                                   <a href="{{ route('daftar_pemeriksaan.edit', $pemeriksaan->id) }}" class="btn btn-secondary">
                                             {{ $pemeriksaan->status_pemeriksaan }}

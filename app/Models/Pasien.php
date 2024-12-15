@@ -13,6 +13,7 @@ class Pasien extends Model
 
     protected $fillable = [
         'no_rm',
+        'kode',
         'nama_pasien',
         'alamat',
         'status_pasien',
@@ -22,10 +23,10 @@ class Pasien extends Model
         'jaminan',
         'no_jaminan',
         'dokter',
-        'group_test',
-        'tgl_pendaftaran',
         'no_lab',
+        'group_test',
         'jenis_pemeriksaan',
+        'jenis_sample',
         'tgl_pemeriksaan',
         'pembayaran',
         'status_pemeriksaan',

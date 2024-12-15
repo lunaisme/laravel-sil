@@ -1,73 +1,22 @@
-<?php
+Berikut adalah semua variabel input yang ada di dalam form tersebut:
 
-namespace App\Http\Controllers;
+1. `no_rm`
+2. `kode`
+3. `nama_pasien`
+4. `alamat`
+5. `status_pasien`
+6. `umur`
+7. `tgl_lahir`
+8. `jenis_kelamin`
+9. `jaminan`
+10. `no_jaminan`
+11. `dokter`
+12. `no_lab`
+13. `group_test`
+14. `jenis_pemeriksaan`
+15. `jenis_sample`
+16. `tgl_pemeriksaan`
+17. `pembayaran` (hidden input)
+18. `status_pemeriksaan` (hidden input)
 
-use App\Models\Pasien;
-use Illuminate\Http\Request;
-
-class PasienController extends Controller
-{
-    public function index()
-    {
-        $pasiens = Pasien::all();
-        return view('daftar_pemeriksaan.index', compact('pasiens'));
-    }
-
-    public function show($id)
-    {
-        $pasien = Pasien::findOrFail($id);
-        return view('daftar_pemeriksaan.show', compact('pasien'));
-    }
-    public function create()
-    {
-        return view('daftar_pemeriksaan.create');
-    }
-
-    public function store(Request $request)
-    {
-        $validatedData = $request->validate([
-            'kode' => 'required',
-            'nama' => 'required',
-            'jenis_kelamin' => 'required',
-            'tgl_daftar' => 'required|date',
-            'jenis_pemeriksaan' => 'required',
-            'jaminan' => 'required',
-            'dokter' => 'required',
-        ]);
-
-        Pasien::create($validatedData);
-
-        return redirect()->route('daftar_pemeriksaan.index')->with('success', 'Data pemeriksaan berhasil ditambahkan.');
-    }
-    public function edit($id)
-    {
-        $pasien = Pasien::findOrFail($id);
-        return view('daftar_pemeriksaan.edit', compact('pasien'));
-    }
-
-    public function update(Request $request, $id)
-    {
-        $validatedData = $request->validate([
-            'kode' => 'required',
-            'nama' => 'required',
-            'jenis_kelamin' => 'required',
-            'tgl_daftar' => 'required|date',
-            'jenis_pemeriksaan' => 'required',
-            'jaminan' => 'required',
-            'dokter' => 'required',
-        ]);
-
-        $pasien = Pasien::findOrFail($id);
-        $pasien->update($validatedData);
-
-        return redirect()->route('daftar_pemeriksaan.index')->with('success', 'Data pemeriksaan berhasil diperbarui.');
-    }
-
-    public function destroy($id)
-    {
-        $pasien = Pasien::findOrFail($id);
-        $pasien->delete();
-
-        return redirect()->route('daftar_pemeriksaan.index')->with('success', 'Data pemeriksaan berhasil dihapus.');
-    }
-}
+Pastikan variabel-variabel ini sesuai dengan yang ada di controller Anda.

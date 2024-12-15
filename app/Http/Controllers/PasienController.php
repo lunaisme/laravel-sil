@@ -28,16 +28,22 @@ class PasienController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'no_rm' => 'required',
             'kode' => 'required',
             'nama_pasien' => 'required',
+            'alamat' => 'required',
+            'status_pasien' => 'required',
+            'umur' => 'required|integer',
+            'tgl_lahir' => 'required|date',
             'jenis_kelamin' => 'required',
-            'tgl_daftar' => 'required|date',
+            'jaminan' => 'required',
+            'no_jaminan' => 'required',
+            'dokter' => 'required',
+            'no_lab' => 'required',
             'group_test' => 'required',
             'jenis_pemeriksaan' => 'required',
-            'jaminan' => 'required',
-            'dokter' => 'required',
-            'no_rm' => 'required',
-            'tanggal_pemeriksaan' => 'required|date',
+            'jenis_sample' => 'required|in:Serum,EDTA,Citrat,Urine,Lainnya',
+            'tgl_pemeriksaan' => 'required|date',
             'pembayaran' => 'required',
             'status_pemeriksaan' => 'required',
         ]);

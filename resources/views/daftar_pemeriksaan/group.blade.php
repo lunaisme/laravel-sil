@@ -21,7 +21,6 @@
                             <th>Kode</th>
                             <th>Nama</th>
                             <th>Jenis Kelamin</th>
-                            <th>Tgl Daftar</th>
                             <th>Jenis Pemeriksaan</th>
                             <th>Jaminan</th>
                             <th>Dokter</th>
@@ -39,7 +38,6 @@
                                 <td>{{ $pasien->kode }}</td>
                                 <td>{{ $pasien->nama_pasien }}</td>
                                 <td>{{ $pasien->jenis_kelamin }}</td>
-                                <td>{{ $pasien->tgl_daftar }}</td>
                                 <td>{{ $pasien->jenis_pemeriksaan }}</td>
                                 <td>{{ $pasien->jaminan }}</td>
                                 <td>{{ $pasien->dokter }}</td>
