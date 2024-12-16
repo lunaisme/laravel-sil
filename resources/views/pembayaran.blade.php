@@ -18,7 +18,7 @@
                             <th>No</th>
                             <th>Kode</th>
                             <th>Nama</th>
-                            <th>Tgl Daftar</th>
+                            <th>Tgl Pemeriksaan</th>
                             <th>Total Harga</th>
                             <th>Jaminan</th>
                             <th>Status</th>
@@ -31,7 +31,7 @@
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $pemeriksaan->kode }}</td>
                                 <td>{{ $pemeriksaan->nama_pasien }}</td>
-                                <td>{{ $pemeriksaan->tgl_lahir }}</td>
+                                <td>{{ $pemeriksaan->tgl_pemeriksaan }}</td>
                                 <td>{{ number_format($pemeriksaan->total_harga, 0, ',', '.') }}</td>
                                 <td>{{ $pemeriksaan->jaminan }}</td>
                                 <td>

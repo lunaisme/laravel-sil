@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('satuan');
             $table->string('nilai_rujukan');
             $table->string('metode')->nullable();
-            $table->enum('status', ['Normal', 'Abnormal']);
+            $table->string('status');
             $table->timestamps();
         });
     }

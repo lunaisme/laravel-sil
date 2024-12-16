@@ -22,7 +22,7 @@ class HasilPemeriksaanController extends Controller
             'hasil_pemeriksaan.*.satuan' => 'required|string',
             'hasil_pemeriksaan.*.nilai_rujukan' => 'required|string',
             'hasil_pemeriksaan.*.metode' => 'nullable|string',
-            'hasil_pemeriksaan.*.status' => 'required|in:Normal,Abnormal',
+            'hasil_pemeriksaan.*.status' => 'required|string',
         ]);
 
         $pasien = Pasien::findOrFail($pasienId);
