@@ -1,22 +1,16 @@
-Berikut adalah semua variabel input yang ada di dalam form tersebut:
+Berikut adalah daftar semua variabel yang digunakan dalam kode Blade tersebut:
 
-1. `no_rm`
+1. `id`
 2. `kode`
-3. `nama_pasien`
-4. `alamat`
-5. `status_pasien`
-6. `umur`
-7. `tgl_lahir`
-8. `jenis_kelamin`
-9. `jaminan`
-10. `no_jaminan`
-11. `dokter`
-12. `no_lab`
-13. `group_test`
-14. `jenis_pemeriksaan`
-15. `jenis_sample`
-16. `tgl_pemeriksaan`
-17. `pembayaran` (hidden input)
-18. `status_pemeriksaan` (hidden input)
+3. `jenis_kelamin`
+4. `group_test`
+5. `jenis_pemeriksaan`
+6. `jaminan`
+7. `dokter`
+8. `no_rm`
+9. `nama_pasien`
+10. `tgl_pemeriksaan`
+11. `pembayaran`
+12. `status_pemeriksaan`
 
-Pastikan variabel-variabel ini sesuai dengan yang ada di controller Anda.
+Pastikan variabel-variabel ini disediakan oleh controller yang mengirim data ke view `buffer.blade.php`.

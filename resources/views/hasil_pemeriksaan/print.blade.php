@@ -112,10 +112,10 @@
 
     <div class="footer">
         <div class="signature">
-            <p>Penanggung Jawab</p>
+            <p>Kepala Lab</p>
             <br><br><br>
             <p>(_________________)</p>
-            <p>{{ $pasien->dokter }}</p>
+            <p> Jefri Nichol, S.Tr.Kes. </p>
         </div>
     </div>
 

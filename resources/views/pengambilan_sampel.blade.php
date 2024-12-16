@@ -3,12 +3,12 @@
 
 @section('main-content')
     <!-- Page Heading -->
-<h1 class="h3 mb-4 text-gray-800">{{ __('Riwayat Pemeriksaan') }}</h1>
+<h1 class="h3 mb-4 text-gray-800">{{ __('Pengambilan Sampel') }}</h1>
 
 <div class="row justify-content-center px-3">
     <div class="col-12 card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Data Riwayat Pemeriksaan</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Data Pengambilan Sampel</h6>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -47,9 +47,13 @@
                                 <td>{{ $pemeriksaan->jenis_sample == 'Urine' ? '✔' : '' }}</td>
                                 <td>{{ $pemeriksaan->jenis_sample == 'Lainnya' ? '✔' : '' }}</td>
                                 <td>
-                                  <a href="{{ route('daftar_pemeriksaan.edit', $pemeriksaan->id) }}" class="btn btn-secondary">
-                                            {{ $pemeriksaan->status_pemeriksaan }}
-                                        </a>
+                                    <a href="{{ route('daftar_pemeriksaan.edit', $pemeriksaan->id) }}" class="btn 
+                                        @if($pemeriksaan->status_pemeriksaan == 'Tolak') btn-danger 
+                                        @elseif($pemeriksaan->status_pemeriksaan == 'Validasi') btn-success 
+                                        @else btn-secondary 
+                                        @endif">
+                                        {{ $pemeriksaan->status_pemeriksaan }}
+                                    </a>
                                 </td>
                             </tr>
                         @endforeach

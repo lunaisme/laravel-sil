@@ -46,6 +46,7 @@ Route::get('/pemeriksaan', function () {
 
 Route::get('/riwayat_pemeriksaan', [PasienController::class, 'updateStatus'])->name('updateStatus');
 Route::get('/updateStatus', [PasienController::class, 'showRiwayatPemeriksaan'])->name('riwayat_pemeriksaan');
+Route::get('/updateStatus/{id}', [PasienController::class, 'updateStatus'])->name('updateStatus');
 Route::get('/pengambilan_sampel', [PasienController::class, 'showPengambilanSampel'])->name('pengambilan_sampel');
 Route::get('/pembayaran', [PasienController::class, 'showPembayaran'])->name('pembayaran');
 

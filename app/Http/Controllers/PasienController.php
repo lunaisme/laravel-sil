@@ -60,22 +60,12 @@ class PasienController extends Controller
     public function update(Request $request, Pasien $daftar_pemeriksaan)
     {
         $request->validate([
-            'kode' => 'required',
-            'nama_pasien' => 'required',
-            'jenis_kelamin' => 'required',
-            'tgl_daftar' => 'required|date',
-            'jenis_pemeriksaan' => 'required',
-            'jaminan' => 'required',
-            'dokter' => 'required',
-            'no_rm' => 'required',
-            'tanggal_pemeriksaan' => 'required|date',
-            'pembayaran' => 'required',
             'status_pemeriksaan' => 'required',
-            'group_test' => 'required',
         ]);
 
+
         $daftar_pemeriksaan->update($request->all());
-        return redirect()->route('daftar_pemeriksaan.index')->with('success', 'Data pemeriksaan berhasil diperbarui.');
+        return redirect()->route('pengambilan_sampel')->with('success', 'Data pemeriksaan berhasil diperbarui.');
     }
 
     public function destroy(Pasien $pasien)
@@ -101,11 +91,12 @@ class PasienController extends Controller
     }
     public function showPengambilanSampel()
     {
-        $pasiens = Pasien::where('status_pemeriksaan', 'Belum')->paginate(request('entries', 10));
+        $pasiens = Pasien::whereIn('status_pemeriksaan', ['Belum', 'Tolak', 'Validasi'])->paginate(request('entries', 10));
         return view('pengambilan_sampel', compact('pasiens'));
     }
-    public function updateStatus(Pasien $pasien)
+    public function updateStatus($id)
     {
+        $pasien = Pasien::findOrFail($id);
         $pasien->update(['status_pemeriksaan' => 'Selesai']);
         return redirect()->route('riwayat_pemeriksaan')->with('success', 'Status pemeriksaan berhasil diperbarui.');
     }
